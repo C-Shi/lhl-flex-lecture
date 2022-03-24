@@ -199,17 +199,27 @@ const y = 1
 increment(y)
 console.log(y) // 1
 
-function paintCar(car) {
-  car.color = 'red'
+// object cannot be replaced
+function emptyObj(obj) {
+  obj = {}
+  console.log(obj)
 }
-
-const myCar = {
-  make: 'honda',
-  color: 'blue'
+const student = {
+  name: 'John'
 }
+emptyObj(student)
+console.log(student)
 
-paintCar(myCar)
-console.log(myCar.color) // 'red'
+// Value inside object can be altered
+function throwCamera(houseCopy) {
+  houseCopy.camera = false
+}
+const house = {
+  camera: true
+}
+console.log(house.camera)
+throwCamera(house)
+console.log(house.camera)
 ```
 
 
