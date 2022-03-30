@@ -35,6 +35,7 @@ console.log(age, age_copy) // 31, 100
     - the value can be any valid JS value (number, function, array, etc)
     - function inside of object as a value is called `method`
     - use keyword `this` refer to the object that calling the method
+
   ```js
   const person = {
     firstName: 'John',
@@ -95,27 +96,6 @@ const car = {
   // dot notation is preferred
   console.log(student.name)
   console.log(student['name'])
-
-  const giftWishList = {
-    laptop: 2000,
-    cellphone: 1000,
-    snowboard: 500
-  }
-
-  // Don't worry about the syntax, pay attention to object accessing
-  const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
-  readline.question('What do you want to buy? \n', item => {
-    // use bracket notation when key is dynamically decided at runtime
-    const price = giftWishList[item]
-    console.log(`To buy ${item} you need to pay $${price}`);
-    readline.close();
-  });
-
-  console.log(`The price of car is ${giftWishList.car}`)
   ```
 4. update value in object
   ```js
@@ -134,20 +114,17 @@ const car = {
   var obj = {
     first: "first",
     second: "second",
-    "3": "3" // add this in later to show unorder
+    "3": "3"
   };
   for (var key in obj) {
     console.log(key);
   };
+
+    // 3
+    // first
+    // second
   ```
   - **object is unordered, object iteration is arbitrary**
-
-2. Use `Object.keys().forEach()` to loop through object
-  ```js
-  const keysArr = Object.keys(obj)
-  keysArr.forEach(key => console.log(key))
-  ```
-  - **Convert object keys to an array and loop through the array**
 
 #### What is this?
 1. `this` is a reserved keyword that refer to the context.
@@ -157,36 +134,27 @@ const car = {
 ```js
 const person = {
   name: 'John',
-  whoAmI: function() {
-    console.log(this)
+  greeting: function() {
+    console.log(`My name is ${this.name}`);
   },
   child: {
     name: 'Bob',
-    whoAmI: function() {
-      console.log(this)
+    greeting: function() {
+      console.log(`My name is ${this.name}`);
     }
   }
 }
 
-person.whoAmI(); // this refers to the person object
-person.child.whoAmI(); // this refers to the child object
-
-// out of scope
-function whatIsThis() {
-  console.log(this)
-}
-
-whatIsThis() // this refer to the global/window object, since any function/variable is attached to global
-
-console.log(this) // this refer to module.exports
+person.greeting(); // this refers to the person object
+person.child.greeting(); // this refers to the child object
 ```
 
 ### Pass by value
 1. Function Definition and Function execution
 2. Parameters are always pass-by-value (create a copy)
 3. Pass-by-value for object
-  1. Reassignment will not reflect on the original object
-  2. change made on the object's property will reflect on the original object
+  1. **Reassignment will not reflect on the original object**
+  2. **change made on the object's property will reflect on the original object**
 
 ```js
 // function definition
@@ -194,7 +162,7 @@ function increment(x) {
   x = x + 1;
 }
 
-const y = 1
+let y = 1
 // function execution
 increment(y)
 console.log(y) // 1
