@@ -1,0 +1,18 @@
+<html>
+  <head></head>
+  <body>
+    <button>Button</button>
+    <script>
+      const button = document.querySelector('button');
+      // event can be asynchronous
+      button.addEventListener('click', function() {
+        console.log('button click')
+      })
+      console.log('After button click')
+
+      // event can also be trigger synchrouous
+      button.dispatchEvent(new Event('click'))
+      console.log('after trigger button click')
+    </script>
+  </body>
+</html>
