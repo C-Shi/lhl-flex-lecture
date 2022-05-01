@@ -69,3 +69,8 @@
     <!-- output the value of a variable/expression -->
     <div>My name is <%= name %></div>
   ```
+
+### Stretch Video
+* For those who did not attend the stretch, we are looking a 6 most common types of response. 
+Video can be accessed [HERE](https://vimeo.com/702245540/ee477277ba).
+* Again, this is OPTIONAL.  

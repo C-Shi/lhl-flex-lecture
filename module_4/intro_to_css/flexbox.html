@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexBox</title>
+
+  <style>
+    .item {
+      background-color: rgb(232, 118, 205);
+      border: 1px solid rgb(220, 33, 176);
+      font-size: 24px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+    }
+
+    .item:nth-of-type(1) {
+      width: 250px;
+      height: 200px;
+      line-height: 100px;
+    }
+
+    .item:nth-of-type(2) {
+      width: 100px;
+    }
+
+    .item:nth-of-type(3) {
+      width: 150px;
+    }
+
+    .item:nth-of-type(4) {
+      width: 75px;
+      height: 50px;
+      line-height: 50px;
+    }
+
+    .item:nth-of-type(5) {
+      width: 300px;
+    }
+
+    /* apply flexbox rule under here */
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+    <div class="item">D</div>
+    <div class="item">E</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic</title>
+
+  <style>
+    * {
+      text-align: center;
+      font-size: 24px;
+      box-sizing: border-box;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+    .wrapper {
+      display:  flex;
+      justify-content: space-around;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .regular, .semantic {
+      width: 45%;
+      background-color: rgb(235, 176, 176);
+    }
+
+    .regular > div:nth-of-type(1), .semantic > nav:nth-of-type(1) {
+      background-color: rgb(165, 165, 232);
+      line-height: 100px;
+    }
+
+    .regular > div:nth-of-type(2), .semantic > section {
+      width: 46%;
+      height: 75%;
+      float: left;
+      background-color: yellowgreen;
+    }
+
+    .regular > div:nth-of-type(3), .semantic > aside {
+      width: 46%;
+      height: 75%;
+      float: right;
+      background-color: rgb(152, 145, 145);
+    }
+
+    .regular > div:nth-of-type(2) > div, .semantic > section > article {
+      height: 45%;
+      background-color: aquamarine;
+    }
+
+    .regular > div:nth-of-type(2) > div > div:nth-of-type(1), .semantic > section > article > header {
+      height: 20%;
+      background-color: rgb(247, 126, 82);
+    }
+
+    .regular > div:nth-of-type(2) > div > div:nth-of-type(2), .semantic > section > article > p {
+      height: 50%;
+      background-color: rgb(176, 36, 176);
+    }
+
+    .regular > div:last-of-type, .semantic > footer {
+      clear: both;
+      background-color: goldenrod;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- LEFT -- non semantic way using div -->
+    <div class="regular">
+      <div>This is navigation bar</div>
+      <div>
+        this is the content section
+        <div>
+          This is the first article
+          <div>This is article title</div>
+          <div>This is the content of the article</div>
+        </div>
+        <div>
+          This is the second article
+          <div>This is article title</div>
+          <div>This is the content of the article</div>
+        </div>
+      </div>
+      <div>This is the side section</div>
+      <div>This is the footer</div>
+    </div>
+
+    <!-- RIGHT -- semantic HTML -->
+    <div class="semantic">
+      <nav>This is navigation bar</nav>
+      <section>
+        This is the content section
+        <article>
+          This is the first article
+          <header>This is article title</header>
+          <p>This is the content of the article</p>
+        </article>
+        <article>
+          This is the second article
+          <header>This is article title</header>
+          <p>This is the content of the article</p>
+        </article>
+      </section>
+      <aside>This is side section</aside>
+      <footer>This is the footer</footer>
+    </div>
+  </div>
+</body>
+</html>
