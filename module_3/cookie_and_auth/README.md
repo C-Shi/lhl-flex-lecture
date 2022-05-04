@@ -26,3 +26,7 @@
 2. Information store on the server side.
 3. Server provide a key `session_id` to access the session data, using cookie
 4. Session provide extra layer of security as information is stored on the server
+
+### Stretch Topic
+1. Globally pass variable to EJS template
+2. Video at https://vimeo.com/manage/videos/702193938/e7c454ca91
