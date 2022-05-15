@@ -1,0 +1,11 @@
+footer {
+  background-color: burlywood;
+  display: flex;
+  justify-content: space-between;
+}
+footer div {
+  color: blue;
+  background-color: #eee;
+}
+
+/*# sourceMappingURL=style.css.map */

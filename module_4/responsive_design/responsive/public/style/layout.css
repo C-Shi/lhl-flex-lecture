@@ -1,0 +1,57 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid black;
+  font-size: 32px;
+}
+
+section {
+  background-color: rgb(223, 146, 146)
+}
+
+aside {
+  background-color: rgb(199, 237, 143)
+}
+
+#btn {
+  background-color: greenyellow;
+}
+section, aside {
+  line-height: 500px;
+  text-align: center;
+
+  /* Use width property to show relative unit % */
+  width: 50%;
+  /* Use height property to show relative unit vh/vw */
+  height: 50vh;
+  /* Use font-size property to show relative unit em and rem */
+  font-size: 2rem;
+
+  /* mention you can use em not only for font-size but also for dimention */
+}
+
+@media screen and (max-width: 768px) {
+  /* Use this to show media media query */
+  section, aside {
+    background-color: transparent;
+    width: 100%;
+  }
+
+  /* use this to show media query do not affect specificity */
+  button {
+    color: red;
+  }
+}
+
+/* Give this as an additional */
+@media print {
+  button {
+    display: none;
+  }
+}
