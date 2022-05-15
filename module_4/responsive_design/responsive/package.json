@@ -1,0 +1,17 @@
+{
+  "name": "responsive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js & npm run scss",
+    "scss": "sass --watch public/style/style.scss public/style/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "sass": "^1.51.0"
+  }
+}

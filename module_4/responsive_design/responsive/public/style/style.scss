@@ -1,0 +1,23 @@
+// use this to explain import
+@import './variable';
+
+// use this to explain css variable
+$footer-background-color: burlywood;
+
+// use this to explain mixin
+@mixin display-flex($justify-content) {
+  display: flex;
+  justify-content: $justify-content;
+}
+
+footer {
+  background-color: $footer-background-color;
+
+  @include display-flex(space-between);
+
+  // use this to explain nested rule
+  div {
+    color: blue;
+    background-color: $background-color;
+  }
+}
