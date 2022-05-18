@@ -51,6 +51,25 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 
 ![ajax design](./image/ajax_design.png)
 
+### Binding Event to dynamcially created Element
+1. This is a bonus
+2. You cannot register a event in advanced on something that created afterward
+3. You need to bind event to a parent that already exist
+
+```js
+$('<button id="dynamic">New Button</button>').appendTo('body');
+
+// This will not work
+$('button#dynamic').on('click', function() { 
+  
+})
+
+// This will work
+$(document).on('click', 'button#dynamic', function() {
+
+})
+```
+
 ### Discussion
 1. When to use AJAX
 2. When to avoid AJAX
