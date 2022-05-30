@@ -81,3 +81,7 @@ SELECT majors.name, AVG(gpa) FROM students JOIN majors ON students.major_id = ma
 WHERE majors.name = 'Economy'
 GROUP BY majors.name;
 ```
+
+- `WHERE` run before `GROUP BY`, `HAVING` run after `GROUP BY`
+- `WHERE` run against raw table. `HAVING` run against grouped query result
+- `WHERE` column do not need to be in `SELECT`, `GROUP BY` need to be in `SELECT`
