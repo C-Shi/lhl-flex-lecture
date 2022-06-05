@@ -1,0 +1,23 @@
+ID: <%= student.id %>
+<form action="/students/<%= student.id %>" method="POST">
+  <label for="name">Name</label>
+  <input type="text" name="name" value="<%= student.name %>">
+
+  <label for="email">Email</label>
+  <input type="text" name="email" value="<%= student.email %>">
+
+  <label for="year">Year</label>
+  <select name="year">
+    <option value="1" <%= student.year == 1 ? 'selected' : ''%>>1</option>
+    <option value="2" <%= student.year == 2 ? 'selected' : ''%>>2</option>
+    <option value="3" <%= student.year == 3 ? 'selected' : ''%>>3</option>
+    <option value="4" <%= student.year == 4 ? 'selected' : ''%>>4</option>
+  </select>
+
+  <label for="gpa">GPA</label>
+  <input type="text" name="gpa" value="<%= student.gpa %>">
+
+  <input type="submit" value="Update">
+</form>
+
+<a href="/students">Back</a>

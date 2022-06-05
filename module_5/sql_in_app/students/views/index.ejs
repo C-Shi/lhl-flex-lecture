@@ -1,0 +1,55 @@
+<%- include('./_header.ejs') %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Year</th>
+        <th>GPA</th>
+        <th></th>
+      </tr>
+    </thead>
+      <% students.forEach(({id, name, email, year, gpa}) => { %>
+        <tr>
+          <td><%= id %></td>
+          <td><%= name %></td>
+          <td><%= email %></td>
+          <td><%= year %></td>
+          <td><%= gpa %></td>
+          <td>
+            <a href="/students/<%= id %>/edit">EDIT</a>
+            <form action="/students/<%= id %>/delete" method="POST">
+              <input type="submit" value="DELETE">
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    <tbody>
+
+
+    </tbody>
+  </table>
+
+  <h3>Create a stduent</h3>
+  <form action="/students" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name">
+  
+    <label for="email">Email</label>
+    <input type="text" name="email">
+  
+    <label for="year">Year</label>
+    <select name="year">
+      <option value="1" >1</option>
+      <option value="2" >2</option>
+      <option value="3" >3</option>
+      <option value="4" >4</option>
+    </select>
+  
+    <label for="gpa">GPA</label>
+    <input type="text" name="gpa">
+  
+    <input type="submit" value="Create">
+  </form>
+<%- include('./_footer.ejs') %>
