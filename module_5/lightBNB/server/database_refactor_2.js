@@ -22,7 +22,7 @@ function table(table) {
 
   return {
     _build: function() {
-      _qString += _select + _join + _where  + _groupBy + _having + _orderBy + _limit;
+      _qString += _insert + _select + _join + _where  + _groupBy + _having + _orderBy + _limit;
       console.log(_qString, _qParams)
     },
     select: function(fields) {
@@ -32,13 +32,13 @@ function table(table) {
     insert: function(...fields) {
       const columns = [];
       const values = [];
-      fields.forEach(({ field, value }) => {
-        _qParams.push(value);
-        columns.push(field);
+      fields.forEach((field) => {
+        _qParams.push(Object.values(field)[0]);
+        columns.push(Object.keys(field)[0]);
         values.push(`$${_qParams.length}`)
       })
       _insert = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${values.join(', ')}) RETURNING *`;
-      return this;
+      return this.first();
     },
     update: function() {
 
@@ -88,7 +88,7 @@ function table(table) {
       this._build()
       return pool.query(_qString, _qParams)
         .then(result => result.rows[0])
-        .catch(err => console.error(err.message))
+        // .catch(err => console.error(err.message))
     },
     all: function() {
       this._build()
@@ -135,10 +135,8 @@ exports.getUserWithId = getUserWithId;
  */
 const addUser = function (user) {
   const { name, email, password } = user;
-  return query(`
-    INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *;
-  `, [name, email, password])
-    .then(first)
+  return table('users')
+    .insert({ name }, { email }, { password })
 }
 exports.addUser = addUser;
 
@@ -204,12 +202,8 @@ exports.getAllProperties = getAllProperties;
 const addProperty = function (property) {
   const { owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, street, city, province, post_code, country, parking_spaces, number_of_bathrooms, number_of_bedrooms } = property;
 
-  return table('properties').insert(...property)
-  return query(`
-    INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, street, city, province, post_code, country, parking_spaces, number_of_bathrooms, number_of_bedrooms)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
-    RETURNING *;
-  `, [owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, street, city, province, post_code, country, parking_spaces, number_of_bathrooms, number_of_bedrooms])
-    .then(first)
+  return table('properties').insert(
+    { owner_id }, { title }, { description }, { thumbnail_photo_url }, { cover_photo_url }, { cost_per_night }, { street }, { city }, { province }, { post_code }, { country }, { parking_spaces }, { number_of_bathrooms }, { number_of_bedrooms }
+  )
 }
 exports.addProperty = addProperty;

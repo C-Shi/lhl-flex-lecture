@@ -22,6 +22,7 @@ GROUP BY properties.city
 ORDER BY total_reservations DESC;
 
 
+-- Get all resevation for a guest and the its property reviews
 SELECT reservations.id, properties.title, properties.cost_per_night, reservations.start_date, avg(rating) as average_rating
 FROM reservations
 JOIN properties ON reservations.property_id = properties.id
@@ -30,3 +31,19 @@ WHERE reservations.guest_id = 1
 GROUP BY properties.id, reservations.id
 ORDER BY reservations.start_date
 LIMIT 10;
+
+-- OR USE subquery
+SELECT reservations.id, properties.title, properties.cost_per_night, reservations.start_date,
+(
+	SELECT avg(rating) as average_rating FROM property_reviews
+	WHERE property_id = properties.id
+	GROUP BY property_id 
+)
+FROM reservations
+JOIN properties ON reservations.property_id = properties.id
+WHERE reservations.guest_id = 1
+GROUP BY properties.id, reservations.id
+ORDER BY reservations.start_date
+LIMIT 10;
+
+-- 1 reservations has multiple reviews, that's why you need to join property_id instead of reservation id
