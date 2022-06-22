@@ -37,12 +37,13 @@
 
 ### Start Working
 1. As a group, you start by listing all features and required logics
-  |Feature|UI Page|Routing|DB Helper|DB Table|
-  |-|-|-|-|-|
-  |Create a blog|New Page Form| `POST /blogs` and `GET /blogs/new`| `createBlog()` | `blogs` |
-  |View all blogs|Index Page| `GET /blogs` | `getBlogs()` | `blogs`|
-  |Update blogs|Edit form| `GET /blogs/:id` and `PUT /blogs/:id`| `getBlogById()` and `updateBlog()` | `blogs`|
-  |Delete blogs|Index page| `DELETE /blogs/:id` | `deleteBlogById()` | `blogs`|
+
+|Feature|UI Page|Routing|DB Helper|DB Table|
+|-|-|-|-|-|
+|Create a blog|New Page Form| `POST /blogs` and `GET /blogs/new`| `createBlog()` | `blogs` |
+|View all blogs|Index Page| `GET /blogs` | `getBlogs()` | `blogs`|
+|Update blogs|Edit form| `GET /blogs/:id` and `PUT /blogs/:id`| `getBlogById()` and `updateBlog()` | `blogs`|
+|Delete blogs|Index page| `DELETE /blogs/:id` | `deleteBlogById()` | `blogs`|
 
 2. Then, as a group, you write the starting code together, consider writing the following code together:
     * Front end entry page `index.html` skeleton -> So you have an actual page to look at.
