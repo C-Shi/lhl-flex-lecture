@@ -1,11 +1,14 @@
 # React Fundamentals
+- [x] What is React.js
+- [x] React Sample code
+- [x] The concept of Component
+- [x] JSX
+- [x] State & Prop
 
 ## What is React.js
 1. A Front-end JavaScript Library/Framework
 2. Component-Based
 3. Declarative views
-
-## React Sample Code
 
 ## HTML Element vs Component
 #### Similarity
@@ -13,9 +16,9 @@
 * Both affect the layout of DOM
 
 #### Differences
-* React Components are like "super" component
 * React Component have function behavior -> In some case it is a function
-* React Re-render when state change
+* React do not change, it 're-render'. The entire component get swapped and reload
+* Component is vertically structure
 
 ## Component Structure
 * Functional Component is just a JavaScript function
@@ -73,6 +76,19 @@ function Counter() {
 }
 ```
 
+5. JSX is declarative. You define what you'd like to see, and let compiler to handle the process
+```js
+// React -> declarative
+function Title() {
+  return (
+    <div className="title">Header</div>
+  )
+}
+
+// jQuery -> imperative
+$('div').addClass('title').html('Header').appendTo('body')
+```
+
 ## Componenent-local State
 1. Rect compoonent has its own data called `state`
 2. Use `useState` hook to read and write to the state
@@ -103,7 +119,7 @@ function Counter() {
 }
 ```
 
-## Properties or Props
+## Properties or Props --- 5:00
 1. **Props** is the data passed from parent to child
 2. In react, we pass props just as we sould set attribute on HTML
 3. **Props** is inmutable in child
