@@ -135,3 +135,6 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+
+4. You will be working inside of the `src` folder
+5. All components, if trace up, should end at `App` component
