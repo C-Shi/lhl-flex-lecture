@@ -8,9 +8,9 @@
 ## Advanced JSX syntax
 1. Fragement
 
-```js
+```jsx
 // <></> will inject a container to React but not adding any actual html element
-export default function App() {
+export default function CarListItem() {
   return (
     <>
       <h5>Model: F-150</h5>
@@ -23,8 +23,8 @@ export default function App() {
 
 2. JSX element child array
 
-```js
-function App() {
+```jsx
+function CarList() {
   const cars = [
     { model: 'F-150', make: 'Ford', price: 5000 },
     { model: 'Corolla', make: 'Toyota', price: 5000}
@@ -46,3 +46,83 @@ function App() {
   );
 }
 ```
+
+3. Props spreading from parent component
+
+```jsx
+const car = { id: 1, model: 'F-150', make: 'Ford', price: 5000 }
+
+// Not use props spreading
+<CarListItem key={car.id} model={car.model} make={car.make} price={car.price} />
+
+// Using props spreading
+<CarListItem key={car.id} {...car} />
+```
+
+4. Props destructing in child component
+```jsx
+// Without destructuring, you have to access property from props object
+export default function CarListItem(props) {
+  return (
+    <div key={props.model}>
+      <h5>Model: {props.model}</h5>
+      <p>Make: {props.make}</p>
+      <p>Price: ${props.price}</p>
+    </div>
+  )
+}
+
+// With destructuring, you can direct access the props value
+export default function CarListItem({id, model, make, price}) {
+  return (
+    <div key={id}>
+      <h5>Model: {model}</h5>
+      <p>Make: {make}</p>
+      <p>Price: ${price}</p>
+    </div>
+  )
+}
+```
+
+## Component Data Communication
+1. How does parent pass data to child?
+
+```jsx
+// Parent Component
+export default function CarList () {
+  const cars = [
+    { id: 1, model: 'F-150', make: 'Ford', price: 5000, status: 'SOLD' },
+    { id: 2, model: 'Corolla', make: 'Toyota', price: 2000, status: 'AVAILABLE'}
+  ]
+
+  const carDisplay = cars.map(car => {
+    return (
+      // Inside of parent component, we pass data as props to child
+      <CarListItem key={car.id} {...car} />
+    )
+  })
+  return (
+    <>
+      {carDisplay}
+    </>
+  );
+}
+
+// Child component
+export default function CarListItem({id, model, make, price, status}) {
+  // inside of child component, we acess the parent data by accessing props value
+  return (
+    <div key={id} style={style}>
+      <h5>Model: {model}</h5>
+      <p>Make: {make}</p>
+      <p>Price: ${price}</p>
+      <p>Status: {status}</p>
+      <button>Mark As Sold</button>
+    </div>
+  )
+}
+```
+
+2. How does child modify parent's data?
+    * Cannot modify inside of child, `props` is immutable
+    * Data should be modified in the component it belongs to
