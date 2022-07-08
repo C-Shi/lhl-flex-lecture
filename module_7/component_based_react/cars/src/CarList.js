@@ -8,6 +8,8 @@ export default function CarList () {
     { id: 2, model: 'Corolla', make: 'Toyota', price: 2000, status: 'AVAILABLE'}
   ])
 
+  const [contact, setContact] = useState('8881234567')
+
   const onStatusChangeHandler = (id, status) => {
     const newState = cars.map(car => {
       if (id === car.id) {
@@ -20,13 +22,17 @@ export default function CarList () {
 
   const carDisplay = cars.map(car => {
     return (
-      // <CarListItem key={car.id} model={car.model} make={car.make} price={car.price} />
-      <CarListItem key={car.id} {...car} onStatusChange={onStatusChangeHandler}/>
+      <ul>
+        <CarListItem key={car.id} {...car} onStatusChange={onStatusChangeHandler}/>
+      </ul>
     )
   })
   return (
     <>
       {carDisplay}
+      <p>Shop contact: {contact}</p>
+
+      <input value={contact} onInput={(e) => setContact(e.target.value)}/>
     </>
   );
 }

@@ -126,3 +126,50 @@ export default function CarListItem({id, model, make, price, status}) {
 2. How does child modify parent's data?
     * Cannot modify inside of child, `props` is immutable
     * Data should be modified in the component it belongs to
+    * Define data update action in parent component
+    * Pass the action as `props` to child
+    * Execute the action in child.
+
+```jsx
+  // In parent component, define data update action
+  const onStatusChangeHandler = (id, status) => {
+    const newState = cars.map(car => {
+      if (id === car.id) {
+        return {...car, status}
+      }
+      return car;
+    })
+    setCars(newState)
+  }
+
+  const carDisplay = cars.map(car => {
+    return (
+      // pass the action as props
+      <CarListItem key={car.id} {...car} onStatusChange={onStatusChangeHandler}/>
+    )
+  })
+```
+
+![React Data Workflow](./image/data_communication.png)
+
+3. How does data flow between siblings?
+    * hint: Find the shared parent
+
+
+## Controlled Input
+1. Applied to `input`, `textarea` and `select`
+2. Two-way binding form field with a state
+3. Allow React to control the form field
+
+```jsx
+export default function CarList() {
+  const [contact, setContact] = useState('8881234567')
+
+  return (
+    <>
+      <p>The contact is {contact}</p>
+      <input value={contact} onInput={(e) => { setContact(e.target.value) }} />
+    </>
+  )
+}
+```

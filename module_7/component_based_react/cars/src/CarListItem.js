@@ -5,12 +5,12 @@ export default function CarListItem({id, model, make, price, status, onStatusCha
     margin: '20px'
   }
   return (
-    <div key={id} style={style}>
+    <li key={id} style={style}>
       <h5>Model: {model}</h5>
       <p>Make: {make}</p>
       <p>Price: ${price}</p>
       <p>Status: {status}</p>
       <button onClick={() => { onStatusChange(id, 'SOLD') }}>Mark As Sold</button>
-    </div>
+    </li>
   )
 }
