@@ -1,4 +1,10 @@
 # Component based UI with React
+- [x] Recap about what is React
+- [x] Advanced JSX syntax
+- [x] Data Communication
+- [x] StoryBook
+- [x] DevTool
+
 ## React - Declarative UI framework
 1. Developer describe **what** to show, NOT **how** to achieve that
 2. React determine **when** to render, not you

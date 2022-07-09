@@ -8,31 +8,18 @@ export default function CarList () {
     { id: 2, model: 'Corolla', make: 'Toyota', price: 2000, status: 'AVAILABLE'}
   ])
 
-  const [contact, setContact] = useState('8881234567')
-
-  const onStatusChangeHandler = (id, status) => {
-    const newState = cars.map(car => {
-      if (id === car.id) {
-        return {...car, status}
-      }
-      return car;
-    })
-    setCars(newState)
-  }
-
-  const carDisplay = cars.map(car => {
-    return (
-      <ul>
-        <CarListItem key={car.id} {...car} onStatusChange={onStatusChangeHandler}/>
-      </ul>
-    )
-  })
   return (
     <>
-      {carDisplay}
-      <p>Shop contact: {contact}</p>
+      <h5>Model: {cars[0].model}</h5>
+      <p>Make: {cars[0].make}</p>
+      <p>Price: ${cars[0].make}</p>
+      <p>Status: {cars[0].status}</p>
 
-      <input value={contact} onInput={(e) => setContact(e.target.value)}/>
+      <h5>Model: {cars[1].model}</h5>
+      <p>Make: {cars[1].make}</p>
+      <p>Price: ${cars[1].make}</p>
+      <p>Status: {cars[1].status}</p>
+
     </>
   );
 }
