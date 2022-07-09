@@ -84,6 +84,24 @@ export default function CarListItem({id, model, make, price}) {
 }
 ```
 
+5. Conditional Statement in JSX
+    1. Using element variable
+    2. Using inline `IF` with `&&` operator
+
+```jsx
+let button;
+if (status == 'AVAILABLE'){
+  button = <button onClick={() => { onStatusChange(id, 'SOLD') }}>Mark As Sold</button>
+} else {
+  button = <></>
+}
+return {button}
+```
+
+```jsx
+{status === 'AVAILABLE' && <button onClick={() => { onStatusChange(id, 'SOLD') }}>Mark As Sold</button>}
+```
+
 ## Component Data Communication
 1. How does parent pass data to child?
 
@@ -172,4 +190,15 @@ export default function CarList() {
     </>
   )
 }
+```
+
+## Storybook
+1. Build UI component in **isolation**
+2. Support not only React
+3. Multiple syntax available
+
+```jsx
+storiesOf("CarListItem", module)
+  .add("AVAILABLE", () => <CarListItem {...pending} onStatusChange={action('Mark As Sold', {data: [ pending.id ]})} />)
+  .add("SOLD", () => <CarListItem {...sold} />)
 ```
