@@ -10,7 +10,7 @@ export default function CarListItem({id, model, make, price, status, onStatusCha
       <p>Make: {make}</p>
       <p>Price: ${price}</p>
       <p>Status: {status}</p>
-      <button onClick={() => { onStatusChange(id, 'SOLD') }}>Mark As Sold</button>
+      {status === 'AVAILABLE' && <button onClick={() => { onStatusChange(id, 'SOLD') }}>Mark As Sold</button>}
     </li>
   )
 }
