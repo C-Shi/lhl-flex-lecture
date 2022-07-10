@@ -93,6 +93,7 @@ export default function CarListItem({id, model, make, price}) {
 5. Conditional Statement in JSX
     1. Using element variable
     2. Using inline `IF` with `&&` operator
+    3. Start by adding a `mark as sold` button and want to hide it if the status is already sold. Change state data
 
 ```jsx
 let button;
@@ -202,9 +203,15 @@ export default function CarList() {
 1. Build UI component in **isolation**
 2. Support not only React
 3. Multiple syntax available
+4. https://storybook.js.org/
 
 ```jsx
 storiesOf("CarListItem", module)
   .add("AVAILABLE", () => <CarListItem {...pending} onStatusChange={action('Mark As Sold', {data: [ pending.id ]})} />)
   .add("SOLD", () => <CarListItem {...sold} />)
 ```
+
+## React DevTool
+1. https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+2. A browser extension for react developer
+3. Check and modify the React component tree, state, props and action
