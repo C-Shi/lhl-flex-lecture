@@ -33,8 +33,17 @@ useEffect(() => {
   // do something
 }, [a, b])
 ```
-3. Why `useEffect` seems to run twice at the beginning?
-4. **BE VERY CAREFUL** when update the value in effect's dependency array.
+
+4. The dependencies array can be empty. Indicate you only run the effect once at intial loading
+
+```jsx
+useEffect(() => {
+  // do something
+}, [])
+```
+
+4. Why `useEffect` seems to run twice at the beginning?
+5. **BE VERY CAREFUL** when update the value in effect's dependency array.
 
 ```jsx
   const [time1, setTime1] = useState(0)
@@ -64,7 +73,7 @@ useEffect(() => {
 1. React don't have its own data source
 2. Use `ajax` to fetch/post data
 3. Library such as **axios** can be used
-4. Axios is a promise-based http request library. https://www.npmjs.com/package/axios
+4. Axios is a promise-based http request library. https://github.com/axios/axios
 
 ```js
 const fetchData = () => {
