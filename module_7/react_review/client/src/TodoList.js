@@ -5,49 +5,13 @@ import NewTodoItem from './NewTodoItem';
 export default function TodoList() {
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    getTasks()
-  }, [])
-
-  const getTasks = () => {
-    axios.get('http://localhost:3001/api/todos')
-    .then(response => {
-      setTodos(response.data)
-    })
-  }
-
-  const deleteTask = (id) => {
-    axios.delete(`http://localhost:3001/api/todos/${id}`)
-      .then(response => {
-        setTodos(todos => {
-          return todos.filter(todo => todo.id != id);
-        })
-      })
-  }
-
-  const updateTask = (id, body) => {
-    axios.put(`http://localhost:3001/api/todos/${id}`, body)
-      .then(response => {
-        setTodos(todos => {
-          return todos.map(todo => {
-            if (todo.id == id) {
-              return {...todo, ...body}
-            }
-            return todo
-          })
-        })
-      })
-  }
-
-  const addTask = (task) => {
-    setTodos(todos => {
-      return [...todos, task]
-    })
-  }
 
   const todoList = todos.map(todo => {
     return (
-      <TodoListItem {...todo} key={todo.id} handleDelete={deleteTask} handleUpdate={updateTask}/>
+      <li key={todo.id}>
+        <span>{todo.task}</span>
+        <button>Delete</button>
+      </li>
     )
   })
   return (
@@ -55,7 +19,6 @@ export default function TodoList() {
       <ul>
         {todoList}
       </ul>
-      <NewTodoItem handleAdd={addTask} />
     </>
   )
 }

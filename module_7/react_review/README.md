@@ -3,6 +3,8 @@
 - [x] Data Fetching from and API
 - [x] Immutable update pattern
 
+![component structure](./image/preview.png)
+
 ## Build Component
 ![component structure](./image/component.png)
 - [x] A **TodoList** component wrap all the todo
