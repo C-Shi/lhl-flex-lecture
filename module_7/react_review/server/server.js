@@ -7,7 +7,15 @@ let todos = [
   {id: 3, task: 'apply for school', completed: false}
 ]
 
-app.use(express.urlencoded({extended: true}))
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  return next()
+})
+
+app.use(express.json())
 
 app.get('/api/todos', (req, res) => {
   res.json(todos);
@@ -15,9 +23,9 @@ app.get('/api/todos', (req, res) => {
 
 app.post('/api/todos', (req, res) => {
   console.log(req.body)
-  const { task } = req.body;
+  const { task, completed } = req.body;
   const id = todos[todos.length - 1 ].id + 1;
-  const data = {id, task, completed: false}
+  const data = {id, task, completed}
   todos.push(data);
   return res.json(data)
 })
@@ -34,7 +42,7 @@ app.put('/api/todos/:id', (req, res) => {
 
 app.delete('/api/todos/:id', (req, res) => {
   todos = todos.filter(todo => todo.id != req.params.id)
-  return res.status(204)
+  return res.status(204).send()
 })
 
 app.listen(3001, () => {
