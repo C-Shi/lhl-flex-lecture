@@ -15,3 +15,17 @@
   * A set of tools to help target DOM elements and trigger DOM events
 * React Testing Library
   * Built on top of DOM Testing Library, specifically for React
+
+
+### Unit Test with React
+* Test against a single function
+* Target Function need to be exported
+* Usually test against a helper file, instead of function directly inside a component
+
+```js
+describe("findIcon function", () => {
+  test('return 🗿 if passing rock', () => {
+    expect(findIcon('Rock')).toBe('🗿')
+  })
+}
+```

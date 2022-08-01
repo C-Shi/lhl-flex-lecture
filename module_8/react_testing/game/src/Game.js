@@ -23,12 +23,6 @@ export default function Game() {
     }
   }, [game.playerChoice, game.computerChoice])
 
-  const computerPick = (choice) => {
-    setGame(prev => {
-      return {...prev, computerChoice: choice}
-    })
-  }
-
   const playerPick = (choice) => {
     setGame(prev => {
       return {...prev, playerChoice: choice}
@@ -48,7 +42,7 @@ export default function Game() {
   return (
     <>
       <div className="game">
-        <Computer computerPick={computerPick} status={game.status} choice={game.computerChoice} />
+        <Computer status={game.status} choice={game.computerChoice} />
         <Player playerPick={playerPick} status={game.status}/>
       </div>
       { game.status === 'Waiting' ? 
