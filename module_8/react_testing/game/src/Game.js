@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Player from './Player'
 import Computer from './Computer'
+import Result from './Result'
 import { checkGame, randomSelection } from './helper/helper'
 
 export default function Game() {
@@ -45,13 +46,8 @@ export default function Game() {
         <Computer status={game.status} choice={game.computerChoice} />
         <Player playerPick={playerPick} status={game.status}/>
       </div>
-      { game.status === 'Waiting' ? 
-        <></> : 
-        <div className="result">
-          <h2>{game.status}</h2>
-          <button onClick={restartGame}>Restart</button>
-        </div>
-      }
+      <Result status={game.status} restartGame={restartGame} />
+      
     </>
   )
 }

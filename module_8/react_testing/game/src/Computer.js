@@ -6,8 +6,8 @@ export default function Computer(props) {
       <h2>Computer</h2>
       {
         props.status === 'Waiting' ? 
-        <div className="result">?</div> :       
-        <div className="result">
+        <div className="computer-result">?</div> :       
+        <div className="computer-result">
           {findIcon(props.choice)}
           {props.choice}
         </div>
