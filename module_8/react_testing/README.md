@@ -1,3 +1,10 @@
+### Learning Objective
+1. Recap type of testing
+2. Quick Glance of React testing tool
+3. Unit Test
+4. Integration Test
+5. Test Coverage
+
 ### Type of Testing
 * Unit - testing a specific function
 * Integration - testing various pieces working together
@@ -7,11 +14,11 @@
 * Manual - You run the code
 
 ### Testing Library
-* Jest
+* Jest https://jestjs.io/docs/api
   * The framework to run our tests
   * Come with `create-react-app` no need to configure
   * `npm run test` will start Jest in watch mode
-* DOM Testing Library
+* DOM Testing Library https://testing-library.com/docs/dom-testing-library/intro/
   * A set of tools to help target DOM elements and trigger DOM events
 * React Testing Library
   * Built on top of DOM Testing Library, specifically for React
