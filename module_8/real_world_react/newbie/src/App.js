@@ -4,16 +4,25 @@ import About from './About';
 import Connect from './Connect';
 import Navigation from './Navigation';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 function App() {
-  const [page, setPage] = useState('Home');
   const [user, setUser] = useState('')
 
   return (
     <div className="App">
-      <Navigation navigate={setPage} auth={setUser} user={user} mode={page}/>
-      {page === 'Home' && <Home />}
+      <BrowserRouter>
+        <Navigation auth={setUser} user={user}/>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About user={user} />}></Route>
+          <Route path="/connect" element={<Connect user={user} />}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      {/* {page === 'Home' && <Home />}
       {page === 'About' && <About user={user}  />}
-      {page === 'Connect' && <Connect user={user} />}
+      {page === 'Connect' && <Connect user={user} />} */}
     </div>
   );
 }

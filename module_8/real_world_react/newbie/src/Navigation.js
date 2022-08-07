@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
+
 export default function Navigation(props) {
   return (
     <>
@@ -14,9 +16,12 @@ export default function Navigation(props) {
           </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
-              <li><a className={props.mode === 'Home' ? 'selected' : ''} onClick={() => props.navigate('Home')}>Home</a></li>
+              <li><Link to='/'>Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/connect">Connect</Link></li>
+              {/* <li><a className={props.mode === 'Home' ? 'selected' : ''} onClick={() => props.navigate('Home')}>Home</a></li>
               <li><a className={props.mode === 'About' ? 'selected' : ''} onClick={() => props.navigate('About')}>About</a></li>
-              <li><a className={props.mode === 'Connect' ? 'selected' : ''} onClick={() => props.navigate('Connect')}>Connect</a></li>
+              <li><a className={props.mode === 'Connect' ? 'selected' : ''} onClick={() => props.navigate('Connect')}>Connect</a></li> */}
               {props.user ? 
                 <li><a onClick={() => props.auth('')}>{props.user} &nbsp; Logout</a></li> :
                 <li><a onClick={() => props.auth('Alex')}>Login</a></li>
