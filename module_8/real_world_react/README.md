@@ -33,3 +33,19 @@
         let navigate = useNavigate();
         navigate('/', { replace: true })
       ```
+
+### useRef hook
+* `useRef` is a hook that return an mutable object that do not trigger render
+* Most common use of `useRef` is to refer to an element
+
+  ```jsx
+  const textarea = useRef(null)
+  useEffect(() => {
+    textarea.current.focus()
+  }, [])
+  <textarea ref={textarea}></textarea>
+  ```
+
+* `useRef` should not be abused.
+
+### Deployment to Heroku
