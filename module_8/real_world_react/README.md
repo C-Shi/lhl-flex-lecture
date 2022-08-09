@@ -49,3 +49,7 @@
 * `useRef` should not be abused.
 
 ### Deployment to Heroku
+* Three deployment options
+    1. Heroku CLI: Create and manage App through Terminal
+    2. Github: Deploy from an authorized Github Repository
+    3. Container Registery: Deploy Docker image using CLI
