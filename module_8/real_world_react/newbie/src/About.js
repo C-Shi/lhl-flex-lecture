@@ -3,7 +3,7 @@ export default function About(props) {
   return (
     <>
       <div className="container-fluid text-center" id="about">
-        <h1>{props.user} Welcome to our website</h1>
+        <h1>Welcome to our website</h1>
         <h3>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</h3>
         <br/><br/>

@@ -2,24 +2,23 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 export default function Feedback(props) {
   const [feedback, setFeedback] = useState('')
-
   const textarea = useRef(null);
 
   useEffect(() => {
     textarea.current.focus()
-    console.log(textarea.current)
   }, [])
-  
+
+  let navigate = useNavigate()
+
   useEffect(() => {
     setFeedback(props.user ? `Hi, my name is ${props.user}.` : '')
   }, [props.user])
 
-  const navigate = useNavigate();
-
   const sendFeecback = (e) => {
     e.preventDefault()
     console.log(textarea.current.value)
-    // console.log(feedback)
+
+    // redirect to a different route after form is sent out
     navigate("/")
   }
 

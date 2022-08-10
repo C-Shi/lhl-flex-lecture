@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import social from './img/social.png'
 import Feedback from './Feedback'
+import { useRef } from 'react';
 export default function Connect(props) {
   return (
     <>
@@ -16,7 +17,7 @@ export default function Connect(props) {
           </div>
         </div>
         <div className="container">
-          <Feedback user={props.user} />
+          <Feedback />
         </div>
       </footer>
     </>

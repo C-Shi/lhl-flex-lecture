@@ -1,6 +1,7 @@
 ## Advanced React
 - [x] Front End Routing and React Router
 - [x] Referencing an object or component `useRef`
+- [x] Deployment to Heroku
 
 ### React Router
 * Native React App is single page, not respond to routing
@@ -15,8 +16,8 @@
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />}></Route>
-      <Route path="/about" element={<About user={user} />}></Route>
-      <Route path="/connect" element={<Connect user={user} />}></Route>
+      <Route path="/about" element={<About />}></Route>
+      <Route path="/connect" element={<Connect />}></Route>
     </Routes>
   </BrowserRouter>
 ```
