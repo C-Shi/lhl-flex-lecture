@@ -10,6 +10,10 @@ class Pokemon < ApplicationRecord
     "My name is #{name}. I am #{weight}lb. I belongs to #{my_types}"
   end
 
+  def index
+    "%03d" % id
+  end
+
   # Callback
   after_find do
     @gender = ['F', 'M'].sample
