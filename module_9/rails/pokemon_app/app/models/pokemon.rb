@@ -3,6 +3,9 @@ class Pokemon < ApplicationRecord
   has_many :pokemon_types
   has_many :types, through: :pokemon_types
 
+  # Validation
+  validates :name, :weight, :avatar, presence: true
+ 
   # Behavior
   def intro
     my_types = types.map { |t| t.name }

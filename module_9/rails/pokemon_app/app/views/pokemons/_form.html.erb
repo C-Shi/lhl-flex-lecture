@@ -12,6 +12,27 @@
   <% end %>
 
   <div class="actions">
+    <%= form.label :id, "Pokemon Index:" %>
+    <%= form.text_field :id %>
+
+    <%= form.label :name, "Pokemon Name:" %>
+    <%= form.text_field :name %>
+
+    <%= form.label :weight, "Pokemon Weight" %>
+    <%= form.number_field :weight %>
+
+    <%= form.label :avatar, "Pokemon Avatar Link" %>
+    <%= form.text_field :avatar %>
+
+    <img src="">
     <%= form.submit %>
   </div>
+
 <% end %>
+
+<script>
+  const url = document.querySelector("[name='pokemon[avatar]']")
+  url.addEventListener('input', function(e) {
+    document.querySelector('img').setAttribute('src', url.value)
+  })
+</script>

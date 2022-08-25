@@ -8,11 +8,17 @@
   <% @pokemons.each do |pokemon| %>
     <li class="pokemon-list-item">
       <figure>
-        <img src="<%= pokemon.avatar %>" class="pokemon-avatar">
+        <%= link_to image_tag(pokemon.avatar, class: 'pokemon-avatar'), pokemon%>
       </figure>
-      <div>
+      <div class="pokemon-info">
         <p>#<%= pokemon.index %></p>
         <h5><%= pokemon.name %></h5>
+      </div>
+      <div class="pokemon-types">
+        <% pokemon.types.each do |type| %>
+          <%= link_to type_path(type) do %>
+            <div style="background-color: <%= type.color %>" class="pokemon-type"><%= type.name %></div>
+          <% end %>
       </div>
     </li>
   <% end %>

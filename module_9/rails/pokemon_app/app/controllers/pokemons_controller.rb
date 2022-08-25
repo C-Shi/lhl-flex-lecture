@@ -65,6 +65,6 @@ class PokemonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pokemon_params
-      params.fetch(:pokemon, {})
+      params.fetch(:pokemon, {}).permit(:id, :name, :weight, :avatar)
     end
 end

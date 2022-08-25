@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_08_22_065236) do
 
   create_table "types", force: :cascade do |t|
     t.string "name"
+    t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -44,6 +44,7 @@
 ### Model
 * Object Relationsal Mapping: The system to build objects carray **persistent data, relations and behaviors**
 * Data: information in each row convered into accessors in object
+* Information <=> Object <=> Data
 
   ```rb
     Pokemon.first # object of first pokemon
@@ -135,6 +136,37 @@
     <a href="/pokemons/new">New Pokemon</a>
   ```
 
+### Form & Validation
+* Use [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html) to build form
+
+  ```rb
+    <%= form_with(model: pokemon) do |form| %>
+      <%= form.label :name, "Pokemon Name:" %>
+      <%= form.text_field :name %>
+      <img src=""></img>
+      <%= form.submit %>
+    <% end %>
+  ```
+
+* Validations are defined at **Model** level
+* Validation is handled by [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+* Validations run automatically, but can also be called
+
+  ```rb
+  class Pokemon < ApplicationRecord
+    # Vlidate a Pokemon needs to have name, weight and avatar before getting into database
+    validates :name, :weight, :avatar, presence: true
+  end
+
+  Pokemon.create() # Validation run
+
+  p = Pokemon.new
+  p.save # Validation run
+
+  p2 = Pokemon.first
+  p2.save # Validation run
+  ```
+* Validations do not change database setting
 
 ### Q & A
 * ActiveRecord Relation vs Object
