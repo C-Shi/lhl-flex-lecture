@@ -1,3 +1,12 @@
+## Rails Review
+- [x] Rails and MVC architecture
+- [x] Resource
+- [x] Migration and Seeding
+- [x] Model
+- [x] Controller
+- [x] View
+- [x] Form and Validation
+
 ### MVC Framework
 * Model-View-Controller
 * (Probably) most popular architectural pattern to build scalable, extensible web projects
@@ -167,9 +176,3 @@
   p2.save # Validation run
   ```
 * Validations do not change database setting
-
-### Q & A
-* ActiveRecord Relation vs Object
-
-### Rails command
-1. `bin/rails routes` get all resourcing

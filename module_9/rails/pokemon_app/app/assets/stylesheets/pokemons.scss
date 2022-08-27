@@ -9,28 +9,28 @@
   text-align: center;
   list-style: none;
 
-  .pokemon-list-item {
-    width: 33%;
+}
+.pokemon-list-item {
+  width: 33%;
 
-    .pokemon-info * {
-      display: inline;
-      vertical-align: top;
-      font-size: 14px;
-      line-height: 24px;
-    }
+  .pokemon-info * {
+    display: inline;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 24px;
+  }
 
-    .pokemon-avatar {
-      width: 250px;
-    }
+  .pokemon-avatar {
+    width: 250px;
+  }
 
-    .pokemon-types {
-      display: flex;
-      justify-content: center;
+  .pokemon-types {
+    display: flex;
+    justify-content: center;
 
-      .pokemon-type {
-        width: 100px;
-        margin: 10px;
-      }
+    .pokemon-type {
+      width: 100px;
+      margin: 10px;
     }
   }
 }

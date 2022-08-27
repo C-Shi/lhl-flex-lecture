@@ -16,9 +16,10 @@
       </div>
       <div class="pokemon-types">
         <% pokemon.types.each do |type| %>
-          <%= link_to type_path(type) do %>
+          <%= link_to type do %>
             <div style="background-color: <%= type.color %>" class="pokemon-type"><%= type.name %></div>
           <% end %>
+        <% end %>
       </div>
     </li>
   <% end %>

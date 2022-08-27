@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :types
   resources :pokemons do
     get :gender, on: :member
     get :types, on: :collection
