@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   resources :types
-  resources :pokemons do
-    get :gender, on: :member
-    get :types, on: :collection
-  end
+  resources :pokemons 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

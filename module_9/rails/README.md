@@ -51,9 +51,10 @@
 * Recommened to create data using Factory or using Model
 
 ### Model
-* Object Relationsal Mapping: The system to build objects carray **persistent data, relations and behaviors**
+* Data and Data manipulation part of MVC
+* Object Relational Mapping: The system to build objects carry **persistent data, relations and behaviors**
 * Data: information in each row convered into accessors in object
-* Information <=> Object <=> Data
+* [Active Record](https://guides.rubyonrails.org/v5.1/active_record_basics.html)
 
   ```rb
     Pokemon.first # object of first pokemon
@@ -126,7 +127,7 @@
 * By default, Rails is able to handle both `html` and `json` reponse
 
 ### View
-* A software class that contains template and data, and produce a response for browswer
+* A software class that contains template and data, and produce a response for browser
 * Rails use **embedded ruby** as template engine. It is similar to EJS
 * Render a custom template from controller
 
