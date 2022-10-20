@@ -1,5 +1,11 @@
 # Objects in JS
 
+- [x] Primitive vs Object
+- [x] Working with Object
+- [x] `this` in Object
+- [x] Object in function
+
+
 ## Primitive vs Object Type
 ### Primitive
 - 7 Primitive types
@@ -168,27 +174,20 @@ increment(y)
 console.log(y) // 1
 
 // object cannot be replaced
-function emptyObj(obj) {
-  obj = {}
-  console.log(obj)
+const car = {
+  color: 'blue'
 }
-const student = {
-  name: 'John'
+function paintCar(car) {
+  car = {
+    color: 'red'
+  }
 }
-emptyObj(student)
-console.log(student)
+paintCar(car) // not work, object cannot be reassigned in function
 
-// Value inside object can be altered
-function throwCamera(houseCopy) {
-  houseCopy.camera = false
+function updateCarColor(car) {
+  car.color = 'black'
 }
-const house = {
-  camera: true
-}
-console.log(house.camera)
-throwCamera(house)
-console.log(house.camera)
-```
+updateCarColor(car) // This work. Object's property can be reassigned to a new value
 
 
 
