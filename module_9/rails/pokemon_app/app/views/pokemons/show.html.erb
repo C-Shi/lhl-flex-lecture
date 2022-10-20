@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<article class="pokemon-list-item">
+  <figure>
+      <%= link_to image_tag(@pokemon.avatar, class: 'pokemon-avatar'), @pokemon%>
+  </figure>
+  <div class="pokemon-info">
+    <p>#<%= @pokemon.index %></p>
+    <h5><%= @pokemon.name %></h5>
+  </div>
+  <div class="pokemon-types">
+    <% @pokemon.types.each do |type| %>
+      <%= link_to type do %>
+        <div style="background-color: <%= type.color %>" class="pokemon-type"><%= type.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <p><%= @pokemon.intro %></p>
+</article>
+
+<%= link_to 'Edit', edit_pokemon_path(@pokemon) %> |
+<%= link_to 'Back', pokemons_path %>
