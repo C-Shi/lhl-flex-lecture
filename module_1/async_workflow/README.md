@@ -1,5 +1,5 @@
 ### Learning Objectives
-- [x] Recap: Higher order function / Callbacks
+- [x] Recap: Definition of Callback
 - [x] Synchronous and Asynchronous programming
 - [x] Async control flow with `setTimeout` and `setInterval`
 - [x] Node.js File System
@@ -7,26 +7,29 @@
 
 ### Higher order function / Callback
 1. A function that is passed to another function is a Callback
-2. The function that takes in a callback, or returning a function is called higher-order function
-3. Higher order functions allow us to write reusable code that operates on action
+2. Callback is a placeholder that represent a future **Operation** when executed
 
 ```js
-const first = () => { /* do something */ };
-/*
-  func is a function that passed to second as Callback
-  second is higher order function 
-*/
-const second = (func) => { func() };
-/* 
-  .filter a higher order function
-  (x) => x > 0 is an anonymous callback
-*/
-[1, -2, 3, -4].filter((x) => x > 0);
+const search = (resource, target, cb) => {
+  /** 
+   * resource and target are placeholder representing a future value
+   * cb is a placeholder representing a future operation
+  */
+  for (const element of resource) {
+    if (element ===  target) {
+      cb(element)
+    }
+  }
+}
+
+search(['Apple', 'Pineapple', 'Orange'], 'Apple', function(fruit) {
+  console.log(`Found ${fruit}`)
+})
 ```
 
 ### Synchronous Programming
 1. JavaScript can only do one thing at a time
-2. Synchronous JavaScript code will execute in the same sequence as you write
+2. Synchronous JavaScript code will execute and finish in the same sequence as you write
 3. An operation that takes long time to finish can potentially block the other code
   ```js
   console.log('Before loop');
