@@ -1,0 +1,12 @@
+<%- include('./_header') %> 
+    <h1>EJS</h1>
+    <ul>
+      <!-- <li><a href="/apple">Apple</a></li>
+      <li><a href="/orange">Orange</a></li>
+      <li><a href="/pineapple">Pineapple</a></li> -->
+
+      <% fruits.forEach(function(fruit) { %>
+        <li><a href="/<%= fruit %>"> <%= fruit %> </a></li>
+      <% }) %>
+    </ul>
+<%- include('./_footer') %> 
