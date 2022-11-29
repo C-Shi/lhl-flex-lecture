@@ -32,6 +32,21 @@
 3. Server provide a key `session_id` to access the session data, using cookie
 4. Session provide extra layer of security as information is stored on the server
 
-### Stretch Topic
-1. Globally pass variable to EJS template
-2. Video at https://vimeo.com/manage/videos/702193938/e7c454ca91
+### User Auth Workflow
+1. Login
+    - Obtain user credential from HTTP `POST` request body
+    - Look up user in database
+    - Register user to session using unique key/token
+
+2. Logout
+    - Clear cookies that represent user identity through a `POST` request
+
+3. Registeration
+    - Obtain new user information from HTTP `POST` request body
+    - Create a new user (perform duplicate check if applicable)
+    - Login the new user directly
+
+4. Visit
+    - read cookie representing user identity
+    - Perform session lookup to identify user
+    - render response based on identity
