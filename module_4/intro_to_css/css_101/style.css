@@ -1,0 +1,36 @@
+/* universal selector */
+* {
+  color: red;
+}
+
+/* type selector */
+p {
+  background-color: green;
+}
+
+/* class selector  */
+.container-class {
+  border-radius: 10px;
+}
+
+/* id selector */
+#paragraph-1 {
+  color: blue;
+}
+
+/* Combination */
+div .p1 {
+  font-size: 20px;
+}
+
+/* Specificity */
+/* 10 + 1  */
+body .orange {
+  color: orange
+}
+
+/* 10 */
+.green {
+  color: green
+}
+

@@ -1,3 +1,4 @@
+Notes: Starting from this module, instruction will be limited. You are encouraged to look around for an answer yourself
 ### Learning Objectives
 * [x] Multi page vs Single Page Application
 * [x] HTML, CSS, JavaScript
@@ -17,6 +18,8 @@
 2. Page load once on initial request
 3. Server send a page with instruction on future activity
 4. Subsequent request are AJAX request Data only
+
+## Question: What is Front End?
 
 ### Front End Component
 * **HTML**: Noun. Describe what to show on the page
