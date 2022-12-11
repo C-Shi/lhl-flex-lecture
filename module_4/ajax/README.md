@@ -1,3 +1,4 @@
+## Data Exchange with AJAX
 ### Learning Objective
 - [x] AJAX Concept
 - [x] AJAX Example
@@ -17,7 +18,7 @@
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    console.log(xhhtp.responseText);
+    alert(xhttp.responseText);
   } else if (this.readyState == 4 && this.status >= 400) {
     console.log('http error')
   }
@@ -25,14 +26,14 @@ xhttp.onreadystatechange = function() {
 xhttp.onerror = function() {
   console.log('There is a network error')
 }
-xtttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true)
+xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true)
 xhttp.send()
 ```
 
 2. Modern AJAX with Promise based library
 
 ```js
-jquery.get('https://jsonplaceholder.typicode.com/todos/1')
+$.get('https://jsonplaceholder.typicode.com/todos/1')
   .then(response => console.log(response))
   .catch(err => console.log(err))
 
@@ -41,6 +42,14 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(data => console.log(data))
   .catch(err => console.log(err))
 ```
+
+### Exercise for Today
+1. As a **User**, when I click **Get More Post**, I should see the next POST being added to the post list with same format
+    - Send a request to `https://jsonplaceholder.typicode.com/posts/:id`
+    - Use Response to generate HTML and append to the page
+2. As a **User**, When I fill the form and click **Post**, I should create a new POST and the new Post should be added to the post list
+    - Post to `https://jsonplaceholder.typicode.com/posts`
+    - Use the Reponse to generate HTML and append to the page
 
 ### Ajax Workflow
 1. Provide the inital HTML page
@@ -51,24 +60,6 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 
 ![ajax design](./image/ajax_design.png)
 
-### Binding Event to dynamcially created Element
-1. This is a bonus
-2. You cannot register a event in advanced on something that created afterward
-3. You need to bind event to a parent that already exist
-
-```js
-$('<button id="dynamic">New Button</button>').appendTo('body');
-
-// This will not work
-$('button#dynamic').on('click', function() { 
-  
-})
-
-// This will work
-$(document).on('click', 'button#dynamic', function() {
-
-})
-```
 
 ### Discussion
 1. When to use AJAX

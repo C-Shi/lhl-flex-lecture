@@ -7,29 +7,21 @@ $(document).ready(() => {
    */
   // When to Fire AJAX request --> When Get More Post button clicked
   $('button').on('click', function() {
-    getPost()
-      .then(post => addPost(post))
+    // send ajax here
+    $.ajax({
+      url: 'https://jsonplaceholder.typicode.com/posts/2',
+      method: 'GET'
+    }).then(response => {
+      let $article = $(`
+        <article>
+          <header>Post # ${response.id}: ${response.title}</header>
+          <p>${response.body}</p>
+        </article>
+      `)
+      $('section').append($article)
+    })
   })
 
-  // Where and what to send Request --> Send a get request to JSONPlaceholder to retrieve a post
-  let index = 1;
-
-  const getPost = () => {
-    const id = ++index
-    return $.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-  }
-
-  // What to do on receiving response --> Generate a new POST element and add to the page
-  const addPost = (post) => {
-    const $article = $(`
-      <article>
-        <header>Post # ${post.id}: ${post.title}</header>
-        <p>${post.body}</p>
-      </article>
-    `);
-
-    $('section').append($article)
-  }
 
   /** ************************************************************************************** */
   /** Ex 2
@@ -40,20 +32,21 @@ $(document).ready(() => {
 
   // When to Fire AJAX request --> When Form is submitted
   $('form').on('submit', function(event) {
-    event.preventDefault();
-    const data = $(this).serialize()
-    sendPost(data)
-      .then(addPost)
-      .then(resetForm)
+    event.preventDefault()
+    $.ajax({
+      method: 'POST',
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      data: $(this).serialize()
+    })
+    .then(response => {
+      let $article = $(`
+        <article>
+          <header>Post # ${response.id}: ${response.title}</header>
+          <p>${response.body}</p>
+        </article>
+      `)
+      $('section').append($article)
+      $(this).trigger('reset')
+    })
   })
-
-  // Where and what to send Request --> Send a POST request to JSONPlaceholder to with body
-  const sendPost = (data) => {
-    return $.post('https://jsonplaceholder.typicode.com/posts', data)
-  }
-
-  // What to do on receiving response --> Generate a new POST element from response, add to page and reset form
-  const resetForm = () => {
-    $('form').trigger('reset')
-  }
 })
