@@ -51,7 +51,7 @@
       ```sql
         -- Calculate the property review through all guests
         SELECT property_id, avg(rating) as average_rating FROM property_reviews
-        GROUP BY property_id 
+        GROUP BY property_id,
 
         --- We can add this sub query to the step 2
         SELECT reservations.id, properties.title, properties.cost_per_night, reservations.start_date,
