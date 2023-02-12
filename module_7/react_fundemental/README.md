@@ -17,8 +17,11 @@
 
 #### Differences
 * React Component have function behavior -> In some case it is a function
-* React do not change, it 're-render'. The entire component get swapped and reload
 * Component is vertically structure
+
+  ![structure](./structure.png)
+
+* React do not change, it 're-render'. The entire component get swapped and reload
 
 ## Component Structure
 * Functional Component is just a JavaScript function
@@ -86,7 +89,7 @@ function Title() {
 }
 
 // jQuery -> imperative
-$('div').addClass('title').html('Header').appendTo('body')
+$('<div>').addClass('title').html('Header').appendTo('body')
 ```
 
 ## Componenent-local State
@@ -119,11 +122,10 @@ function Counter() {
 }
 ```
 
-## Properties or Props --- 5:00
+## Properties or Props
 1. **Props** is the data passed from parent to child
 2. In react, we pass props just as we sould set attribute on HTML
 3. **Props** is inmutable in child
-4. Change of props value will also trigger re-render
 
 ```js
 function Counter() {
