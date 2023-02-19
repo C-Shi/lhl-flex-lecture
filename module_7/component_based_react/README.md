@@ -8,8 +8,7 @@
 ## React - Declarative UI framework
 1. Developer describe **what** to show, NOT **how** to achieve that
 2. React determine **when** to render, not you
-3. React re-render is not synchronous when data change
-4. Data ownership is a key concept in understanding React
+3. Data ownership is a key concept in understanding React
 
 ## Advanced JSX syntax
 1. Fragement
