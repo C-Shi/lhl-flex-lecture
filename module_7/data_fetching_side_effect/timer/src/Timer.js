@@ -1,18 +1,26 @@
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
-  const [time1, setTime1] = useState(0)
-  const [time2, setTime2] = useState(100)
+  const [privateData, setPrivateData] = useState(0)
+  const [publicData, setPublicData] = useState(0)
+
+  useEffect(() => {
+    console.log('Warning: Private Data has changed')
+  }, [privateData])
+
+  useEffect(() => {
+    console.log('Component initialized')
+  }, [])
 
   return (
     <>
-      <h2>Time1</h2>
-      <h1 id="time1">{time1}</h1>
-      <button onClick={() => setTime1(time1 + 1)}>Add One</button>
+      <h2>Public Data</h2>
+      <h1 id="public">{publicData}</h1>
+      <button onClick={() => setPublicData(publicData + 1)}>Add One</button>
 
-      <h2>Time2</h2>
-      <h1 id="time2">{time2}</h1>
-      <button onClick={() => setTime2(time2 - 1)}>Minus One</button>
+      <h2>Private Data</h2>
+      <h1 id="private">{privateData}</h1>
+      <button onClick={() => setPrivateData(privateData + 1)}>Add One</button>
     </>
   )
 }

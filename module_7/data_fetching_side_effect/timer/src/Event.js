@@ -11,7 +11,11 @@ export default function Event() {
 
   useEffect(() => {
     document.addEventListener('mousemove', mouseEvent)
-  }, [x, y])
+
+    return () => {
+      document.removeEventListener('mousemove', mouseEvent)
+    }
+  }, [])
 
   return (
     <div>
