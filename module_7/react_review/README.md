@@ -1,9 +1,11 @@
-## Content
+## React Review
+- [x] Reivew by building a simple Todo App
 - [x] Design and Build Component
 - [x] Data Fetching from and API
 - [x] Immutable update pattern
 
-![component structure](./image/preview.png)
+## Project Overview
+![component structure](./image/preview.gif)
 
 ## Build Component
 ![component structure](./image/component.png)
