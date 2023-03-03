@@ -1,13 +1,22 @@
 const express = require('express');
+const todoGen = require('fake-todos');
+const { v4: uuidv4 } = require('uuid');
 const app = express();
 
-let todos = [
-  {id: 1, task: 'go shopping', completed: false},
-  {id: 2, task: 'read books', completed: false},
-  {id: 3, task: 'apply for school', completed: false}
-]
+let todos = todoGen(7).map(todo => {
+  return {id: todo.id, completed: todo.done, task: todo.what}
+})
 
 app.use(express.json())
+
+// set CORS to allow external application access our routes
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  return next()
+})
 
 app.get('/api/todos', (req, res) => {
   res.json(todos);
@@ -15,7 +24,7 @@ app.get('/api/todos', (req, res) => {
 
 app.post('/api/todos', (req, res) => {
   const { task, completed } = req.body;
-  const id = todos[todos.length - 1 ].id + 1;
+  const id = uuidv4();
   const data = {id, task, completed}
   todos.push(data);
   return res.json(data)
