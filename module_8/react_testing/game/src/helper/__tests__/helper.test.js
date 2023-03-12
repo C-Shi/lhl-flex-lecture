@@ -1,27 +1,45 @@
 import { checkGame, findIcon, randomSelection } from '../helper';
 
-describe("randomSelection function", () => {
-  let options;
+describe('test random selection', () => {
+  test('random selection will pick anything with rock paper scissor', () => {
+    const options = ['rock', 'paper', 'scissor'];
+    const result = randomSelection(options);
 
-  beforeAll(() => {
-    options = ['Rock', 'Paper', 'Scissor'];
-  })
-
-  test('return a random selection with Rock, Paper and Scissor', () => {
-    expect(options).toContain(randomSelection(options))
+    expect(options).toContain(result)
   })
 })
 
-describe("findIcon function", () => {
-  test('return 🗿 if passing rock', () => {
-    expect(findIcon('Rock')).toBe('🗿')
+describe('test find Icon', () => {
+  test('Rock will return 🗿', () => {
+    const result = findIcon('Rock');
+
+    expect(result).toBe('🗿')
   })
-  test('return 📃 if passing paper', () => {
-    expect(findIcon('Paper')).toBe('📃')
+
+  test('Paper will return 📃', () => {
+    const result = findIcon('Paper')
+
+    expect(result).toBe('📃')
   })
-  test('return ✂️ if passing scissor', () => {
-    expect(findIcon('Scissor')).toBe('✂️')
+
+  test('Scissor will return ✂️', () => {
+    const result = findIcon('Scissor')
+
+    expect(result).toBe('✂️')
+  })
+
+  test('Otherwise return undefined', () => {
+    const result = findIcon('Water')
+
+    expect(result).toBeUndefined()
   })
 })
 
-// test check game
+describe('test check game', () => {
+  test('player Rock computer Paper will return lost', () => {
+    expect(checkGame({
+      playerChoice: 'Rock',
+      computerChoice: 'Paper'
+    })).toBe('Lost')
+  })
+})
