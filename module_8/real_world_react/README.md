@@ -1,13 +1,13 @@
 ## Advanced React
 - [x] Front End Routing and React Router
-- [x] Referencing an object or component `useRef`
+- [x] Extracting State Logic with `useReducer`
 - [x] Deployment to Heroku
 
 ### React Router
 * Native React App is single page, not respond to routing
   * Always have to start from "Home" page
   * No history available
-* [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview) is a routing library for React App
+* [React Router (v6)](https://reactrouter.com/en/main) is a routing library for React App
   * Use Single Page App to have front end "Routing"
   * Allow history
 * Route Config
@@ -35,19 +35,25 @@
         navigate('/', { replace: true })
       ```
 
-### useRef hook
-* `useRef` is a hook that return an mutable object that do not trigger render
-* Most common use of `useRef` is to refer to an element
+### useReducer
+* Reducer consolidate state logic for centralize management
+* Customize how to update states
+* "Reduce" means take in multiple arguements and return single output
+* Manage complicated state
+* It cannot do anything that `useState` cannot do
 
-  ```jsx
-  const textarea = useRef(null)
-  useEffect(() => {
-    textarea.current.focus()
-  }, [])
-  <textarea ref={textarea}></textarea>
-  ```
+```js
+  const onFormEvent = (state, event) => {
+    return {...state, [event.target.name]: event.target.value }
+  }
 
-* `useRef` should not be abused.
+  const [feedback, dispatch] = useReducer(onFormEvent, {
+    name: '',
+    email: '',
+    comment: '',
+    rate: '1',
+  })
+```
 
 ### Deployment to Heroku
 * Three deployment options

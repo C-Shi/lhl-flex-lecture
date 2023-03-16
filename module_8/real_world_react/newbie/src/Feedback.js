@@ -1,30 +1,42 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+
+
 export default function Feedback(props) {
-  const [feedback, setFeedback] = useState({
-    name: '',
-    email: '',
-    comment: '',
-    rate: 0,
-  })
+  const onFormEvent = (state, event) => {
+    return {...state, [event.target.name]: event.target.value }
+  }
 
   let navigate = useNavigate()
 
+  const [feedback, dispatch] = useReducer(onFormEvent, {
+    name: '',
+    email: '',
+    comment: '',
+    rate: '1',
+  })
+
+  const onSubmit = (event) => {
+    event.preventDefault()
+    alert('Form Submit')
+    navigate('/')
+  }
 
   return (
-    <form style={{width: '60%', margin: '0 auto'}}>
+    <form style={{width: '60%', margin: '0 auto'}} onSubmit={onSubmit}>
       <div className="form-group">
         <label>Name</label>
-        <input className="form-control" value={feedback.name} onChange={e => { setFeedback({...feedback, name: e.target.value})}}></input>
+        <input className="form-control" name="name" value={feedback.name} onChange={dispatch}></input>
         
         <label>Email</label>
-        <input className="form-control" value={feedback.email} onChange={e => { setFeedback({...feedback, email: e.target.value})}}></input>
+        <input className="form-control" name="email" value={feedback.email} onChange={dispatch}></input>
 
         <label>Feedback</label>
-        <textarea className="form-control" rows="3" value={feedback.comment} onChange={e => { setFeedback({...feedback, comment: e.target.value})}}></textarea>
+        <textarea className="form-control" rows="3" name="comment" value={feedback.comment} onChange={dispatch}></textarea>
 
         <label>Rate</label>
-        <select className="form-control" value={feedback.star} onChange={e => { setFeedback({...feedback, rate: e.target.value})}}>
+        <select className="form-control" name="rate" value={feedback.star} onChange={dispatch}>
           <option type="number">1</option>
           <option type="number">2</option>
           <option type="number">3</option>
