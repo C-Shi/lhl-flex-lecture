@@ -35,7 +35,7 @@
         navigate('/', { replace: true })
       ```
 
-### useReducer
+### Consolidating State Logic and useReducer
 * Reducer consolidate state logic for centralize management
 * Customize how to update states
 * "Reduce" means take in multiple arguements and return single output
