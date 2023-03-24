@@ -5,6 +5,10 @@
 
 ### Programming Paradigms
 1. A way of organizing and describing languages based on ideological design decision
+    * Object Oriented vs Procedural
+    * Declarative vs Imperative
+    * Functional vs Inductive
+    * etc
 2. **Imperative** vs **Declarative** languages
     * Imperative programming: telling computer how to do some work
     * Declarative programming: telling computer what to achieve
@@ -12,6 +16,7 @@
     * The extent a language prevents type errors
     * Weakly type language favor developers' ease of use
     * Strongly type language favor correctness
+    * Dynamically vs Statically
     ```js
       function sum(a, b) {
         return a + b;
@@ -33,6 +38,8 @@
       // error: expected ‘int’ but argument is of type ‘char *’
       printf("%s", sum("AB", "CD"));
     ```
+    
+    * Ruby is strongly typed but dynamically typed
 
 ### Ruby Programming Language
 - [x] Variables and types
@@ -52,6 +59,8 @@
   str = "hello" # String
   sym = :symbol # Symbol
   ```
+
+* use `.class` to verify type
 * String Concatenation
   ```rb
   hello = "Hello"
@@ -247,6 +256,11 @@
     end
 
   end
+
+  my_car = Vehicle.new 2010, 'Ford', 'Mustang'
+  your_car = Vehicle.new 2020, 'Honda', 'Civic'
+
+  my_car.info
   ```
 
 
