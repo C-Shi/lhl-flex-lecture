@@ -40,6 +40,7 @@ console.log(age, age_copy) // 31, 100
     - the key is always a string
     - the value can be any valid JS value (number, function, array, etc)
     - function inside of object as a value is called `method`
+    - non-function inside of object as a value is usually referred as `property`
     - use keyword `this` refer to the object that calling the method
 
   ```js
