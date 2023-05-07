@@ -1,17 +1,17 @@
 const loadPageHeader = () => { console.log('Show Page Header')};
-const getVancouverWeather = (callback) => {
-  console.log('Getting Vancouver Weather...');
+const getWeatherAsync = (callback) => {
+  console.log('Getting Weather...');
   setTimeout(callback, 3000);
 };
-const getTorontoWeather = (callback) => {
-  console.log('Getting Toronto Weather...');
+const getNewsAsync = (callback) => {
+  console.log('Getting News...');
   setTimeout(callback, 4000);
 };
 const loadPageFooter = () => { console.log('Show Page Footer') };
-const showVancouverWeather = () => { console.log('Vancouver: Sunny 20C') };
-const showTorontoWeather = () => { console.log('Toronto: Cloudy 15C') }
+const showWeather = () => { console.log('Vancouver: Sunny 20C') };
+const showNewsAsync = () => { console.log('These are news') }
 
 loadPageHeader();
-getVancouverWeather(showVancouverWeather);
-getTorontoWeather(showTorontoWeather);
+getWeatherAsync(showWeather);
+getNewsAsync(showNewsAsync);
 loadPageFooter();
