@@ -1,8 +1,14 @@
+## Web Server 101
+- [x] Intro to Web Server
+- [x] Node.js Express
+- [x] Express Middleware
+- [x] EJS template
+
 ### Intro to Web Server
 1. Web Server control how web users access hosted file
 2. software that understands URL and HTTP
 3. Act as a gateman between client and resources
-4. Simple Node js HTTP server
+4. Contains "routing" to point request to specific resources
 
   ![web server](./image/web_server.png)
 
