@@ -66,10 +66,9 @@ document.querySelector('button')
 ```
 
 ### CSS
-1. use *Selectors* to find an element to apply styles
-2. Selectors can be combined
-3. *Specificity* determine which rules should be applied in case of conflict
-4. use `!important` to overwrite any other rules. use with caution
+1. Selector: Target the element you want to style
+2. Rules: Describe how an element will look like
+3. Specificity: Determine the priority of conflicting rules
 
 |Type     |Syntax                     |Specificity |
 |---------|---------------------------|------------|
