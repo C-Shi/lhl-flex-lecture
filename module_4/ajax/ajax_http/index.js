@@ -22,7 +22,7 @@ app.post('/users', (req, res) => {
         age: Number(req.body.age)
     })
 
-    res.redirect('/users')
+    res.render('users', { users })
 })
 
 app.get('/users-ajax', (req, res) => {
@@ -35,6 +35,8 @@ app.post('/users-ajax', (req, res) => {
         name: req.body.name,
         age: Number(req.body.age)
     }
+
+    users.push(newUser);
 
     res.json(newUser)
 })
