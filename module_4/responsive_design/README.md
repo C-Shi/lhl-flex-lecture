@@ -94,3 +94,5 @@ body {
 1. In project folder run `npm i sass`
 2. public SCSS `sass <path for .scss> <path for output .css>`
 3. Add a watch command to listen to change `sass --watch <path for .scss> <path for output .css>`
+4. Documentation: `https://sass-lang.com/documentation/syntax`
+5. Cheat Sheet: `https://devhints.io/sass`
