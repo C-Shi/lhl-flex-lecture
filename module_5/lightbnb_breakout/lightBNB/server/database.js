@@ -1,9 +1,9 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'Cheng',
+  user: 'cheng',
   password: '',
-  database: 'lightBNB',
+  database: 'lightbnb',
   host: 'localhost'
 })
 

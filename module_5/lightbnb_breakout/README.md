@@ -1,29 +1,41 @@
 ## Lighthouse BnB Q&A
 
-- [x] SQL Query Structure
-- [x] Work with Complicated Query
-- [x] Structure your project
+- [x] Project Structure Walkthrough
+- [x] Understanding SQL query structure
+- [x] Tips on complicated query
+
+### Project Structure
+- Seperate your code based on their functionality and responsibility
+- **Front End**: User Interface. Handle user action
+  - Front End JavaScript
+- **Routing**: Manage request and response, authentication, validation and business logic
+  - Express Router
+- **Data module**: Interaction with database. Isolation from business logic
+- **Migration/Seeding**: Project database setup
+
+    ![project structure](./img/project_structure.jpg)
+
+- What are the benefits of separation of concern?
 
 ### SQL Query Structure
 - **Clauses** are functions/sections in SQL to perform a specific task. They are in a specific order
-- Exercise: Get all resevation for a guest number 1 and the its property reviews
+- Exercise: Get properties title and its average rating on property with owner_id 1, 2, 3, 4, 5
 
 ```sql
 -- SELECT Clauses
-SELECT reservations.id, properties.title, properties.cost_per_night, avg(rating) as average_rating FROM reservations
+SELECT properties.title, AVG(rating) FROM properties
 
 -- JOIN Clauses
-JOIN properties ON reservations.property_id = properties.id
-JOIN property_reviews ON properties.id = property_reviews.property_id
+JOIN property_reviews ON property_reviews.property_id = properties.id
 
 -- WHERE Clauses
-WHERE reservations.guest_id = 1
+WHERE owner_id IN (1, 2, 3, 4, 5)
 
 -- GROUP BY HAVING Clauses
-GROUP BY properties.id, reservations.id HAVING cost_per_night > 20000
+GROUP BY properties.title
 
 -- ORDER BY Clauses
-ORDER BY reservations.start_date
+ORDER BY avg(rating) DESC
 
 -- LIMIT Clauses
 LIMIT 10;
@@ -79,12 +91,3 @@ LIMIT 10;
     ORDER BY reservations.start_date;
     ```
 
-### Project Structure
-- Seperate your code based on their functionality and responsibility
-- **Routing**: Manage request and response, authentication, validation and business logic
-- **Data module**: Interaction with database. Isolation from business logic
-- **Migration/Seeding**: Project database setup
-
-    ![project structure](./img/project_structure.jpg)
-
-- What are the benefits of separation of concern?
