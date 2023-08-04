@@ -1,5 +1,5 @@
-import { useReducer } from 'react'
-import CampgroundListItem from './CampgroundListItemReducer'
+import { useState } from 'react'
+import CampgroundListItemReducer from './CampgroundListItemReducer'
 
 const campgroundData = [
     { id: 1, name: 'Tunnel Mtn. Village I', fee: 30, available: true },
@@ -14,29 +14,41 @@ const campgroundData = [
     { id: 10, name: 'Rainbox Falls', fee: 32, available: true },
 ]
 
-export default function CampgroundList () {
-    const reducer = (state, action) => {
-        // action = { type: 'BOOK/DELETE', id: 'campground id'}
-        switch(action.type) {
-            case 'BOOK':
-                return state.map(c => {
-                    if (c.id === action.id) {
-                        return {...c, available: false}
-                    }
-                    return c
-                })
-            case 'DELETE':
-                return state.filter(c => {
-                    return c.id !== action.id
-                })
-        }
+export default function CampgroundListReducer () {
+    const [campgrounds, setCampgrounds] = useState(campgroundData)
+
+    const bookCampground = (id) => {
+        /* Invalid -> State is immutable
+        campgrounds = campgrounds.map(c => {
+            if (c.id === id) {
+                return {...c, available: false}
+            }
+            return c
+        })
+        */ 
+        setCampgrounds(currentCampgrounds => {
+            const newCampgrounds = currentCampgrounds.map(c => {
+                if (c.id === id) {
+                    return {...c, available: false}
+                }
+                return c
+            })
+            return newCampgrounds
+        })
     }
-    const [campgrounds, dispatch] = useReducer(reducer, campgroundData)
+
+    const deleteCampground = (id) => {
+        setCampgrounds(currentCampgrounds => {
+            const newCampgrounds = currentCampgrounds.filter(c => {
+                return c.id !== id
+            })
+            return newCampgrounds
+        })
+    }
 
     const campgroundsList = campgrounds.map(cg => {
         return (
-            <CampgroundListItem campground={cg} dispatch={dispatch} key={cg.id}/>
-
+            <CampgroundListItemReducer key={cg.id} campground={cg} bookCampground={bookCampground} deleteCampground={deleteCampground}/>
         )
     })
 

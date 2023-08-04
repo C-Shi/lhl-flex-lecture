@@ -1,4 +1,4 @@
-export default function CampgroundListItem(props) {
+export default function CampgroundListItemReducer(props) {
     return (
         <div className="card col-2 mx-3 my-3" key={props.campground.id}>
             <img src="https://images.unsplash.com/photo-1534880606858-29b0e8a24e8d" className="card-img-top" />
@@ -7,14 +7,8 @@ export default function CampgroundListItem(props) {
                 <p className="card-text">Fee: ${props.campground.fee}/night</p>
 
                 <div className="d-flex justify-content-between">
-                    {props.campground.available && 
-                        <button className="btn btn-outline-primary btn-sm" 
-                        onClick={() => { props.dispatch({ type: 'BOOK', id: props.campground.id }) }}>Book</button>
-                    }
-
-                    <button className="btn btn-outline-danger btn-sm" 
-                        onClick={() => { props.dispatch({ type: 'DELETE', id: props.campground.id }) }}
-                    >Delete</button>
+                    {props.campground.available && <button className="btn btn-outline-primary btn-sm" onClick={() => { props.bookCampground(props.campground.id) }}>Book</button>}
+                    <button className="btn btn-outline-danger btn-sm" onClick={() => { props.deleteCampground(props.campground.id) }}>Delete</button>
                 </div>
             </div>
         </div>
