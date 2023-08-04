@@ -1,17 +1,31 @@
 import { useState } from 'react'
 import CampgroundListItem from './CampgroundListItem'
 
+const campgroundData = [
+    { id: 1, name: 'Tunnel Mtn. Village I', fee: 30, available: true },
+    { id: 2, name: 'Two Jack Lakeside', fee: 25, available: true },
+    { id: 3, name: 'Johnston Canyon', fee: 40, available: true },
+    { id: 4, name: 'Castle Mountain', fee: 22, available: true },
+    { id: 5, name: 'Mosquito Creek', fee: 21, available: true },
+    { id: 6, name: 'Lake Louise', fee: 26, available: true },
+    { id: 7, name: 'Big Bar Lake', fee: 28, available: true },
+    { id: 8, name: 'Ellison', fee: 36, available: true },
+    { id: 9, name: 'Champion Lake', fee: 42, available: true },
+    { id: 10, name: 'Rainbox Falls', fee: 32, available: true },
+]
+
 export default function CampgroundList () {
-    const [campgrounds, setCampgrounds] = useState([
-        { id: 1, name: 'Two Jack Main', description: 'Hello World', available: true, image: 'https://images.unsplash.com/photo-1534880606858-29b0e8a24e8d' },
-        { id: 2, name: 'Two Jack Main', description: 'Hello World', available: true, image: 'https://images.unsplash.com/photo-1487730116645-74489c95b41b' },
-        { id: 3, name: 'Two Jack Main', description: 'Hello World', available: true, image: 'https://images.unsplash.com/photo-1533873984035-25970ab07461' },
-        { id: 4, name: 'Two Jack Main', description: 'Hello World', available: true, image: 'https://images.unsplash.com/photo-1497900304864-273dfb3aae33' },
-        { id: 5, name: 'Two Jack Main', description: 'Hello World', available: true, image: 'https://images.unsplash.com/photo-1492648272180-61e45a8d98a7' },
-        { id: 6, name: 'Two Jack Main', description: 'Hello World', available: true, image: 'https://images.unsplash.com/photo-1502218808493-e5fd26249efc' },
-    ])
+    const [campgrounds, setCampgrounds] = useState(campgroundData)
 
     const bookCampground = (id) => {
+        /* Invalid -> State is immutable
+        campgrounds = campgrounds.map(c => {
+            if (c.id === id) {
+                return {...c, available: false}
+            }
+            return c
+        })
+        */ 
         setCampgrounds(currentCampgrounds => {
             const newCampgrounds = currentCampgrounds.map(c => {
                 if (c.id === id) {
@@ -23,9 +37,18 @@ export default function CampgroundList () {
         })
     }
 
+    const deleteCampground = (id) => {
+        setCampgrounds(currentCampgrounds => {
+            const newCampgrounds = currentCampgrounds.filter(c => {
+                return c.id !== id
+            })
+            return newCampgrounds
+        })
+    }
+
     const campgroundsList = campgrounds.map(cg => {
         return (
-            <CampgroundListItem campground={cg} bookCampground={bookCampground}/>
+            <CampgroundListItem campground={cg} bookCampground={bookCampground} deleteCampground={deleteCampground}/>
         )
     })
 

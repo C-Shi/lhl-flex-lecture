@@ -1,6 +1,7 @@
 import './App.css';
 import './CampgroundList'
 import CampgroundList from './CampgroundList';
+import CampgroundListReducer from './CampgroundListReducer'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <a className="nav-link disabled" href="#" aria-disabled="true">About</a>
       </nav>
 
-      <CampgroundList />
+      {/* <CampgroundList /> */}
+      <CampgroundListReducer />
     </div>
   );
 }
