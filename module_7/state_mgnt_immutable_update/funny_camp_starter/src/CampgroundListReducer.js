@@ -18,32 +18,24 @@ export default function CampgroundListReducer () {
     const [campgrounds, setCampgrounds] = useState(campgroundData)
 
     const bookCampground = (id) => {
-        /* Invalid -> State is immutable
-        campgrounds = campgrounds.map(c => {
-            if (c.id === id) {
-                return {...c, available: false}
-            }
-            return c
-        })
-        */ 
         setCampgrounds(currentCampgrounds => {
-            const newCampgrounds = currentCampgrounds.map(c => {
-                if (c.id === id) {
-                    return {...c, available: false}
+            let newCampgrounds = [...campgrounds];
+            newCampgrounds = newCampgrounds.map(campground => {
+                if (campground.id === id) {
+                    return {...campground, available: false}
                 }
-                return c
+                return campground
             })
-            return newCampgrounds
+            setCampgrounds(newCampgrounds)
         })
     }
 
     const deleteCampground = (id) => {
-        setCampgrounds(currentCampgrounds => {
-            const newCampgrounds = currentCampgrounds.filter(c => {
-                return c.id !== id
-            })
-            return newCampgrounds
+        let newCampgrounds = [...campgrounds];
+        newCampgrounds = newCampgrounds.filter(campground => {
+            return campground.id !== id
         })
+        setCampgrounds(newCampgrounds)
     }
 
     const campgroundsList = campgrounds.map(cg => {
