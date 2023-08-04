@@ -18,16 +18,14 @@ export default function CampgroundListReducer () {
     const [campgrounds, setCampgrounds] = useState(campgroundData)
 
     const bookCampground = (id) => {
-        setCampgrounds(currentCampgrounds => {
-            let newCampgrounds = [...campgrounds];
-            newCampgrounds = newCampgrounds.map(campground => {
-                if (campground.id === id) {
-                    return {...campground, available: false}
-                }
-                return campground
-            })
-            setCampgrounds(newCampgrounds)
+        let newCampgrounds = [...campgrounds];
+        newCampgrounds = newCampgrounds.map(campground => {
+            if (campground.id === id) {
+                return {...campground, available: false}
+            }
+            return campground
         })
+        setCampgrounds(newCampgrounds)
     }
 
     const deleteCampground = (id) => {
