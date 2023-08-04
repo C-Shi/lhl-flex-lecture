@@ -16,39 +16,9 @@ const campgroundData = [
 
 export default function CampgroundList () {
     const [campgrounds, setCampgrounds] = useState(campgroundData)
-
-    const bookCampground = (id) => {
-        /* Invalid -> State is immutable
-        campgrounds = campgrounds.map(c => {
-            if (c.id === id) {
-                return {...c, available: false}
-            }
-            return c
-        })
-        */ 
-        setCampgrounds(currentCampgrounds => {
-            const newCampgrounds = currentCampgrounds.map(c => {
-                if (c.id === id) {
-                    return {...c, available: false}
-                }
-                return c
-            })
-            return newCampgrounds
-        })
-    }
-
-    const deleteCampground = (id) => {
-        setCampgrounds(currentCampgrounds => {
-            const newCampgrounds = currentCampgrounds.filter(c => {
-                return c.id !== id
-            })
-            return newCampgrounds
-        })
-    }
-
     const campgroundsList = campgrounds.map(cg => {
         return (
-            <CampgroundListItem campground={cg} bookCampground={bookCampground} deleteCampground={deleteCampground}/>
+            <CampgroundListItem campground={cg}/>
         )
     })
 
