@@ -45,7 +45,7 @@ export default function CampgroundList () {
 
     return (
         <div className="container campground-list">
-            <div class="alert alert-primary">Book Campground</div>
+            <div className="alert alert-primary">Book Campground</div>
             <div className="row">
                 {loading ? <Spinner /> : campgroundsList}
             </div>

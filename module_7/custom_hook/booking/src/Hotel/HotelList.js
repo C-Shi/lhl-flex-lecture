@@ -3,7 +3,7 @@ import HotelListItem from './HotelListItem'
 import Spinner from '../Spinner'
 import initialHotels from '../db/hotel'
 
-export default function CampgroundList () {
+export default function HotelList () {
     const [hotels, setHotels] = useState(initialHotels)
     const [loading, setLoading] = useState(false)
 
@@ -44,7 +44,7 @@ export default function CampgroundList () {
     })
     return (
         <div className="container campground-list">
-            <div class="alert alert-primary">Book Hotel</div>
+            <div className="alert alert-primary">Book Hotel</div>
             <div className="row">
                 {loading ? <Spinner/> : hotelList}
             </div>
