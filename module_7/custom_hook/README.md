@@ -24,6 +24,87 @@
     - Let custom hooks handle the data manipulation
     - React component only access data/logic it use directly
 2. Reusing Logic
+    - Custom hook can be called multiple time in different components
 3. custom hook has to be a function named `useXXX`
+
+    ```jsx
+    export default function useAccomodation(initialAccomodations) {
+        const [accomodations, setAccomodations] = useState(initialAccomodations)
+        const [loading, setLoading] = useState(false)
+
+        const toBook = (id) => {
+            setLoading(true)
+            setAccomodations(currentAccomodations => {
+                const newAccomodations = currentAccomodations.map(a => {
+                    if (a.id === id) {
+                        return {...a, available: false}
+                    }
+                    return a
+                })
+                return newAccomodations
+            })
+            setTimeout(() => setLoading(false), 1000)
+        }
+
+        const toDelete = (id) => {
+            setLoading(true)
+            setAccomodations(currentAccomodations => {
+                const newAccomodations = currentAccomodations.filter(a => {
+                    return a.id !== id
+                })
+                return newAccomodations
+            })
+            setTimeout(() => setLoading(false), 1000)
+        }
+
+        return {
+            accomodations,
+            toBook,
+            toDelete,
+            loading
+        }
+    }
+    ```
 4. A custom hook can also use another custom hook
 5. Centralize all states into a single component (Redux Alternative)
+
+    ```jsx
+    export default function useApplicationData(initialPage, initialCampgrounds, initialHotels) {
+        const [page, setPage] = useState(initialPage)
+
+        const {
+            accomodations: campgrounds,
+            toBook: bookCampground,
+            toDelete: deleteCampground,
+            loading: loadingCampground
+        } = useAccomodation(initialCampgrounds)
+
+        const {
+            accomodations: hotels,
+            toBook: bookHotel,
+            toDelete: deleteHotel,
+            loading: loadingHotel
+        } = useAccomodation(initialHotels)
+
+        return {
+            page: {
+                page, 
+                setPage
+            },
+
+            campgrounds: {
+                campgrounds,
+                bookCampground,
+                deleteCampground,
+                loadingCampground
+            },
+
+            hotels: {
+                hotels,
+                bookHotel,
+                deleteHotel,
+                loadingHotel
+            }
+        }
+    }
+    ```
