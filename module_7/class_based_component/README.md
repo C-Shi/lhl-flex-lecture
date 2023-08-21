@@ -68,3 +68,9 @@
     ```
 
 * OOP in JavaScript behave different than other traditional OOP languages such as Ruby, Python, C++
+
+## History of Class-based Components in React
+1. React was first Introduced in 2013
+2. React use JavaScript ES6 class to create component and Manage States Until...
+3. Introduction of Hooks in React 16.8 (2019)
+4. Functional Component is the future, but large amount of App are based on Class Components
