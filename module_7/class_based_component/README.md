@@ -74,3 +74,59 @@
 2. React use JavaScript ES6 class to create component and Manage States Until...
 3. Introduction of Hooks in React 16.8 (2019)
 4. Functional Component is the future, but large amount of App are based on Class Components
+
+## Class Based Component
+1. Wirte a Class instead of a Function. React will "initalize" the component for you at run time
+2. You cannot customize how you call your state. It has to be `state` and `setState`
+3. Class component will **ALWAYS** have a `render` function that return JSX
+4. Because it is a class, we have to use `this` to refer to any method or property we defined
+5. Computed property has to go inside of `render` method
+6. State Management Method need to **Bind** first before it can be passed as prop
+7. Use Component Lifecycle Method to for data fetching and side effect
+
+```js
+export default class CampgroundList extends React.Component {
+    // Constructor
+    constructor () {
+        super();
+        this.state = { campgrounds: [] }
+        // method binding
+        this.bookCampground = this.bookCampground.bind(this)
+    }
+
+    // Lifecycle Method to run at certain stage
+    componentDidMount() {
+        fetch('http://localhost:3030/campgrounds')
+        .then(res => res.json())
+        .then(campgroundData => {
+            this.setState({ campgrounds: campgroundData })
+        })
+    }
+
+    bookCampground(id) {
+        const newCampgrounds = this.state.campgrounds.map(c => {
+            if (c.id === id) {
+                return {...c, available: false}
+            }
+            return c
+        })
+        this.setState({ campgrounds: newCampgrounds })
+    }
+    // must have a render method
+    render() {
+        const campgroundsList = this.state.campgrounds.map(cg => {
+            return (
+                <CampgroundListItem key={cg.id} campground={cg} bookCampground={this.bookCampground} />
+            )
+        })
+
+        return (
+            <div className="container campground-list">
+                <div className="row">
+                    {campgroundsList}
+                </div>
+            </div>
+        )
+    }
+}
+```

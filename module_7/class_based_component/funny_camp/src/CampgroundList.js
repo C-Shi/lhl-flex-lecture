@@ -1,57 +1,57 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
 import CampgroundListItem from './CampgroundListItem'
 
-export default function CampgroundList () {
-    const [campgrounds, setCampgrounds] = useState([]);
+export default class CampgroundList extends React.Component {
+    constructor () {
+        super();
 
-    useEffect(() => {
-        console.log('Page Rendered')
+        this.state = {
+            campgrounds: []
+        }
+
+        this.bookCampground = this.bookCampground.bind(this)
+        this.deleteCampground = this.deleteCampground.bind(this)
+    }
+
+    componentDidMount() {
         fetch('http://localhost:3030/campgrounds')
         .then(res => res.json())
         .then(campgroundData => {
-            setCampgrounds(campgroundData)
-        })
-    }, [])
-
-    useEffect(() => {
-        console.log('Page Updated')
-        return () => {
-            console.log('Page will re-render')
-        }
-    }, [campgrounds])
-
-    const bookCampground = (id) => {
-        setCampgrounds(currentCampgrounds => {
-            const newCampgrounds = currentCampgrounds.map(c => {
-                if (c.id === id) {
-                    return {...c, available: false}
-                }
-                return c
-            })
-            return newCampgrounds
+            this.setState({ campgrounds: campgroundData })
         })
     }
 
-    const deleteCampground = (id) => {
-        setCampgrounds(currentCampgrounds => {
-            const newCampgrounds = currentCampgrounds.filter(c => {
-                return c.id !== id
-            })
-            return newCampgrounds
+    bookCampground(id) {
+        const newCampgrounds = this.state.campgrounds.map(c => {
+            if (c.id === id) {
+                return {...c, available: false}
+            }
+            return c
         })
+        this.setState({ campgrounds: newCampgrounds })
     }
 
-    const campgroundsList = campgrounds.map(cg => {
+    deleteCampground (id) {
+        const newCampgrounds = this.state.campgrounds.filter(c => {
+            return c.id !== id
+        })
+
+        this.setState({ campgrounds: newCampgrounds })
+    }
+
+    render() {
+        const campgroundsList = this.state.campgrounds.map(cg => {
+            return (
+                <CampgroundListItem key={cg.id} campground={cg} bookCampground={this.bookCampground} deleteCampground={this.deleteCampground}/>
+            )
+        })
+
         return (
-            <CampgroundListItem key={cg.id} campground={cg} bookCampground={bookCampground} deleteCampground={deleteCampground}/>
-        )
-    })
-
-    return (
-        <div className="container campground-list">
-            <div className="row">
-                {campgroundsList}
+            <div className="container campground-list">
+                <div className="row">
+                    {campgroundsList}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
