@@ -3,8 +3,9 @@ import CampgroundListItem from './CampgroundListItem'
 
 export default class CampgroundList extends React.Component {
     constructor () {
+        console.log('constructor')
         super();
-
+        
         this.state = {
             campgrounds: []
         }
@@ -12,13 +13,23 @@ export default class CampgroundList extends React.Component {
         this.bookCampground = this.bookCampground.bind(this)
         this.deleteCampground = this.deleteCampground.bind(this)
     }
+    
 
     componentDidMount() {
+        console.log('componentDidMount')
         fetch('http://localhost:3030/campgrounds')
         .then(res => res.json())
         .then(campgroundData => {
             this.setState({ campgrounds: campgroundData })
         })
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate')
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
     }
 
     bookCampground(id) {
@@ -40,6 +51,7 @@ export default class CampgroundList extends React.Component {
     }
 
     render() {
+        console.log('render')
         const campgroundsList = this.state.campgrounds.map(cg => {
             return (
                 <CampgroundListItem key={cg.id} campground={cg} bookCampground={this.bookCampground} deleteCampground={this.deleteCampground}/>

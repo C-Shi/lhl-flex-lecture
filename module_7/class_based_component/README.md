@@ -82,7 +82,7 @@
 4. Because it is a class, we have to use `this` to refer to any method or property we defined
 5. Computed property has to go inside of `render` method
 6. State Management Method need to **Bind** first before it can be passed as prop
-7. Use Component Lifecycle Method to for data fetching and side effect
+7. Use [Component Lifecycle](#component-lifecycle-method) Method to for data fetching and side effect
 
 ```js
 export default class CampgroundList extends React.Component {
@@ -130,3 +130,15 @@ export default class CampgroundList extends React.Component {
     }
 }
 ```
+
+## Component Lifecycle Method
+1. It’s very important to free up resources taken by the components when they are destroyed. 
+2. We can declare special methods on the component class to run some code at specific stage.
+
+    ![Lifecycle Method](./images/lifecycle.png)
+
+3. With hook, we can achieve the same result by `useEffect`
+
+    ![Lifecycle vs Hook](./images/hooks_lifecycle.png)
+
+<small>The above graph is from [hello-js.com](https://hello-js.com/articles/react-class-and-hooks-lifecycle-explained/). This article explains the react cycle and hook concept very well</small>
