@@ -52,7 +52,7 @@ describe("findIcon function", () => {
   expect(getByTestId(container, 'result-footer')).toHaveTextContent("Waiting for your selection")
 ```
 
-### Event and Mocking
+### Async Event and Mocking
 1. Use `fireEvent` to simulate an DOM event, such as user click
 2. Use Mocking function `jest.fn` to **Replace** an external function with a mocking in test
 3. We don't want to call acutal function over and over, eg: API called. State update
