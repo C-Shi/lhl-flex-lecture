@@ -1,7 +1,7 @@
 ## Advanced React
 - [x] Front End Routing and React Router
-- [x] Extracting State Logic with `useReducer`
-- [x] Deployment to Heroku
+- [x] Deploy your React App to Netlify
+- [x] CI/CD Pipeline
 
 ### React Router
 * Native React App is single page, not respond to routing
@@ -35,28 +35,9 @@
         navigate('/', { replace: true })
       ```
 
-### Consolidating State Logic and useReducer
-* Reducer consolidate state logic for centralize management
-* Customize how to update states
-* "Reduce" means take in multiple arguements and return single output
-* Manage complicated state
-* It cannot do anything that `useState` cannot do
+### Deploy your React App to Netlify
+* Activities that make software available to use
+* Netlify is a Platform as a Service (PaaS) cloud solution
+* You can Drag and Drop or use Default CD pipeline
 
-```js
-  const onFormEvent = (state, event) => {
-    return {...state, [event.target.name]: event.target.value }
-  }
-
-  const [feedback, dispatch] = useReducer(onFormEvent, {
-    name: '',
-    email: '',
-    comment: '',
-    rate: '1',
-  })
-```
-
-### Deployment to Heroku
-* Three deployment options
-    1. Heroku CLI: Create and manage App through Terminal
-    2. Github: Deploy from an authorized Github Repository
-    3. Container Registery: Deploy Docker image using CLI
+### CI/CD Pipeline with Circle CI
