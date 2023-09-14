@@ -13,6 +13,8 @@
     * Imperative programming: telling computer how to do some work
     * Declarative programming: telling computer what to achieve
 3. Type Safety
+  ![Type](./image/type.webp)
+  
     * The extent a language prevents type errors
     * Weakly type language favor developers' ease of use
     * Strongly type language favor correctness
