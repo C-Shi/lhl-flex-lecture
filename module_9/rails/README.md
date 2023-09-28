@@ -20,8 +20,8 @@
     |C#|.NET|
 
 
-### Resource
-* use `rails g scaffold <Resource_Name>` to generate a complete set of resource
+### New Rails App
+* Generate new rails App with `rails new <project-name>` command
 * Resources 
   - Migration: script that build/revoke the database table structure
   - Model: A file that contains data logic (ActiveRecord)
@@ -37,9 +37,10 @@
   ```rb
   def change
     create_table :pokemons do |t|
+      create_table :items do |t|
       t.string :name
-      t.integer :health
-      t.string :avatar
+      t.boolean :done
+      t.references :category, foreign_key: true, index: true
       t.timestamps
     end
   end
@@ -57,47 +58,20 @@
 * [Active Record](https://guides.rubyonrails.org/v5.1/active_record_basics.html)
 
   ```rb
-    Pokemon.first # object of first pokemon
-    Pokemon.where({name: 'Venusaur'}).take.weight # get weight of Venusaur
+    Category.first # object of first pokemon
   ```
 * Relation: connect model to model for quick accessing 
 
   ```rb
-    class Pokemon < ApplicationRecord
-      # Relation
-      has_many :pokemon_types
-      has_many :types, through: :pokemon_types
+    class Category < ApplicationRecord
+        has_many :items
     end
 
-    class PokemonType < ApplicationRecord
-      belongs_to :pokemon
-      belongs_to :type
+    class Item < ApplicationRecord
+        belongs_to :category
     end
-
-    class Type < ApplicationRecord
-      has_many :pokemon_types
-      has_many :pokemons, through: :pokemon_types
-    end
-
-    Pokemon.where(name: 'Bulbasaur').take.types #Check what types is Bulbasaur
-    Type.where(name: 'Fire').take.pokemons #Check what pokemons belong to Fire category
   ```
-* Behavior: customized action to be used frequently
 
-  ```rb
-  class Pokemon < ApplicationRecord
-    # Relation
-    has_many :pokemon_types
-    has_many :types, through: :pokemon_types
-
-    # Behavior
-    def intro
-      my_types = types.map { |t| t.name }
-      my_types = my_types.join(" and ")
-      "My name is #{name}. I am #{weight}lb. I belongs to #{my_types}"
-    end
-  end
-  ```
 
 ### Controller
 * Controller file handle incoming and outgoing traffic, and determine business logic
@@ -145,35 +119,3 @@
     
     <a href="/pokemons/new">New Pokemon</a>
   ```
-
-### Form & Validation
-* Use [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html) to build form
-
-  ```rb
-    <%= form_with(model: pokemon) do |form| %>
-      <%= form.label :name, "Pokemon Name:" %>
-      <%= form.text_field :name %>
-      <img src=""></img>
-      <%= form.submit %>
-    <% end %>
-  ```
-
-* Validations are defined at **Model** level
-* Validation is handled by [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
-* Validations run automatically, but can also be called
-
-  ```rb
-  class Pokemon < ApplicationRecord
-    # Vlidate a Pokemon needs to have name, weight and avatar before getting into database
-    validates :name, :weight, :avatar, presence: true
-  end
-
-  Pokemon.create() # Validation run
-
-  p = Pokemon.new
-  p.save # Validation run
-
-  p2 = Pokemon.first
-  p2.save # Validation run
-  ```
-* Validations do not change database setting
