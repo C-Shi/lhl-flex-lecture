@@ -7,8 +7,6 @@
 |Parameters|React|Angular|Vue|
 |---|---|---|---|
 |Framework Size|Small|Large|Small|
-|Data Binding|Unidirectional|Bidirectional|Bidirectional|
-|Built In Async Data Flow|N/A|Observables|N/A|
 |CLI tool|create-react-app|@angular/cli|@vue/cli|
 |Language|JavaScript|Typescript|JavaScript|
 
