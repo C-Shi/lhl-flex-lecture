@@ -10,12 +10,12 @@
 |CLI tool|create-react-app|@angular/cli|@vue/cli|
 |Language|JavaScript|Typescript|JavaScript|
 
-![Statistics](./images/angular-vs-vue-vs-react.jpeg)
+![Statistics](./images/trend.jpeg)
 
 ### Build a small Weather App using Angular
-
-![App Design](./images/weather_app.png)
-
+  - [x] A search box for search city
+  - [x] A display section showing the weather
+  
 ### Angular HTTP modules and Observables
 1. Angular by default use **Observables** instead of **Promise**
 2. In Observable pattern, Observer **Subscribe** to Observables
