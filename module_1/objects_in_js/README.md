@@ -162,6 +162,7 @@ person.child.greeting(); // this refers to the child object
 3. Pass-by-value for object
   1. **Reassignment will not reflect on the original object**
   2. **change made on the object's property will reflect on the original object**
+4. Here is a good article for some advanced learning: https://www.javascripttutorial.net/javascript-pass-by-value/
 
 ```js
 // function definition
@@ -189,7 +190,12 @@ function updateCarColor(car) {
   car.color = 'black'
 }
 updateCarColor(car) // This work. Object's property can be reassigned to a new value
+```
 
+### Takeaway
+1. Access Object with dot vs bracket notation. When to use each.
+2. `for...in` Loop of Object
+3. Pass object to function as parameters - Reassignment vs Change
 
 
 
