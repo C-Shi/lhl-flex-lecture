@@ -22,7 +22,7 @@ app.post('/users', (req, res) => {
         age: Number(req.body.age)
     })
 
-    res.render('users', { users })
+    res.redirect('back')
 })
 
 app.get('/users-ajax', (req, res) => {
