@@ -38,7 +38,7 @@ Fixed units like `px` are great at defining dimension on a fixed screen size. Ho
 3. Media query do not affect specificity
 
 ```css
-@media screen only and (min-width: 500px) and (orientation: landscape) {
+@media screen and (min-width: 500px) and (orientation: landscape) {
   div {
     background-color: #FFF
   }
