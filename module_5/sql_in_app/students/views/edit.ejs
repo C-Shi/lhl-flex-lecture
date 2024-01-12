@@ -17,6 +17,13 @@ ID: <%= student.id %>
   <label for="gpa">GPA</label>
   <input type="text" name="gpa" value="<%= student.gpa %>">
 
+  <label for="majors">Major</label>
+  <select name="major_id">
+    <% majors.forEach(major => { %>
+      <option value="<%= major.id %>" <%= student.major_id == major.id ? 'selected' : '' %>><%= major.name %></option>
+    <% }) %>
+  </select>
+
   <input type="submit" value="Update">
 </form>
 

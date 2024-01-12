@@ -7,16 +7,18 @@
         <th>Email</th>
         <th>Year</th>
         <th>GPA</th>
+        <th>Major</th>
         <th></th>
       </tr>
     </thead>
-      <% students.forEach(({id, name, email, year, gpa}) => { %>
+      <% students.forEach(({id, name, email, year, gpa, major}) => { %>
         <tr>
           <td><%= id %></td>
           <td><%= name %></td>
           <td><%= email %></td>
           <td><%= year %></td>
           <td><%= gpa %></td>
+          <td><%= major %></td>
           <td>
             <a href="/students/<%= id %>/edit">EDIT</a>
             <form action="/students/<%= id %>/delete" method="POST">

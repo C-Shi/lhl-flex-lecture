@@ -18,8 +18,12 @@ const pool = new Pool({
 // List all students
 app.get('/students', (req, res) => {
   // SELECT * FROM students
-  pool.query('SELECT * FROM students ORDER BY id')
+  pool.query(`SELECT students.id, students.name, email, year, gpa, majors.name as major FROM students 
+    LEFT JOIN majors ON students.major_id = majors.id 
+    ORDER BY students.id`
+  )
   .then(results => {
+    console.log(results.rows)
     res.render('index', { students: results.rows })
   })
 });
@@ -28,9 +32,12 @@ app.get('/students', (req, res) => {
 app.get('/students/:id/edit', (req, res) => {
   // SELECT * FROM students WHERE id = ?
   const id = req.params.id
-  pool.query(`SELECT * FROM students WHERE id = $1`, [id])
-  .then(results => {
-    res.render('edit', { student: results.rows[0] })
+  Promise.all([
+    pool.query(`SELECT * FROM students WHERE id = $1`, [id]),
+    pool.query(`SELECT * FROM majors`)
+  ])
+  .then(([students, majors]) => {
+    res.render('edit', { student: students.rows[0], majors: majors.rows })
   })
 });
 
@@ -48,11 +55,11 @@ app.post('/students', (req, res) => {
 app.post('/students/:id', (req, res) => {
   // UPDATE students SET email = ?, name = ?, year = ?, gpa = ? WHERE id = ?
   const id = req.params.id;
-  const { name, email, year, gpa } = req.body;
+  const { name, email, year, gpa, major_id } = req.body;
   pool.query(`
-    UPDATE students SET email = $1, name = $2, year = $3, gpa = $4 
-    WHERE id = $5`
-  , [email, name, year, gpa, id]).then(() => {
+    UPDATE students SET email = $1, name = $2, year = $3, gpa = $4, major_id = $5
+    WHERE id = $6`
+  , [email, name, year, gpa, major_id, id]).then(() => {
     res.redirect('/students');
   })
 });
@@ -74,5 +81,4 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Server Start at 3000');
-  console.log(process.env)
 })
