@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
-export default function Title () {
+export default function Title (props) {
     const [title, setTitle] = useState("Funny Camp")
+
+    const vacant = props.campsiteList.filter(campsite => campsite.status === 'Vacant').length
 
     const onClickTitile = () => {
         setTitle(() => {
@@ -11,7 +13,7 @@ export default function Title () {
     }
     return (
         <>
-            <h1 onClick={onClickTitile}>{title}</h1>
+            <h1 onClick={onClickTitile}>{title} ({vacant} Vacant)</h1>
         </>
     )
 }
