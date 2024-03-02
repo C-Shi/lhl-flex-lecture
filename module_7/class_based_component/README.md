@@ -8,6 +8,7 @@
 
 ### JavaScript and Object Orient Programming
 * JavaScript is multi-paradigm programming language that support functional and object-oriented programming
+* Object-oriented programming (OOP) is a computer programming model that organizes software design around data, or objects, rather than functions and logic.
 * We have been programming in a functional and procedural way using JavaScript
     
     ```js
