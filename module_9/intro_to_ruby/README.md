@@ -4,14 +4,8 @@
 - [x] JavaScript vs Ruby
 
 ### Programming Paradigms
-1. A way of organizing and describing languages based on ideological design decision
-    * Object Oriented vs Procedural
-    * Declarative vs Imperative
-    * Functional vs Inductive
-    * etc
-2. **Imperative** vs **Declarative** languages
-    * Imperative programming: telling computer how to do some work
-    * Declarative programming: telling computer what to achieve
+1. Ruby is a **Object Oriented, multi-threading, scripting** languages
+2. Ruby is strongly, dynamically typed languages
 3. Type Safety
   ![Type](./image/type.webp)
   
@@ -41,7 +35,6 @@
       printf("%s", sum("AB", "CD"));
     ```
     
-    * Ruby is strongly typed but dynamically typed
 
 ### Ruby Programming Language
 - [x] Variables and types
