@@ -11,17 +11,18 @@
 * Model-View-Controller
 * (Probably) most popular architectural pattern to build scalable, extensible web projects
 
-    |Language|Framework|
-    |-|-|
-    |Java|Spring|
-    |Ruby|Rails|
-    |PHP|Laravel|
-    |Python|Django|
-    |C#|.NET|
+|Language|Framework|
+|--------|--------|
+|Java|Spring|
+|Ruby|Rails|
+|PHP|Laravel|
+|Python|Django|
+|C#|.NET|
 
 
 ### New Rails App
 * Generate new rails App with `rails new <project-name>` command
+* Use `rails console` to run rails code in irb
 * Resources 
   - Migration: script that build/revoke the database table structure
   - Model: A file that contains data logic (ActiveRecord)
@@ -119,3 +120,20 @@
     
     <a href="/pokemons/new">New Pokemon</a>
   ```
+
+## Rails Libraries
+- Rails is a framework made up of a collection of libraries
+- **Active Record**
+  - An Object Relational Mapper (ORM)
+  - Allows you to query and modify the application data in an intuitive way
+- **Action View**
+  - Handles template lookup and rendering
+  - Provides helpers for building forms and other UI elements
+- **Action Controller**
+  - Controller library
+  - Controller's make sense of the request and decide what should be returned to the client
+- **Action Dispatch**
+  - The Rails router
+  - Handles incoming requests and forwards them to the correct controller
+- **Action Cable**
+  - Websockets for Rails
