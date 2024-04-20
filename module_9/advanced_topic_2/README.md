@@ -1,5 +1,5 @@
 # Advanced Topic
-- [x] Angular at a glance
+- [x] Front End Framework with VUE
 - [x] Docker 101
 
 ### React vs Angular vs Vue
@@ -12,55 +12,28 @@
 
 ![Statistics](./images/trend.jpeg)
 
-### Build a small Weather App using Angular
-  - [x] A search box for search city
-  - [x] A display section showing the weather
-  
-### Angular HTTP modules and Observables
-1. Angular by default use **Observables** instead of **Promise**
-2. In Observable pattern, Observer **Subscribe** to Observables
-3. This also include angular HTTP modules
-4. Weather Requesing Example
-    - Promise:
-        - John ask Bob to provide the weather
-        - Bob "promise" to give John weather when he has internet access
-        - Bob then search for the weather data and told John it was Sunny with 25C
-        - Bob left
-    - Obsersables:
-        - John ask Bob to providing live weather in real time, and write it down in a white board
-        - Bob then "Subscribe" to a weather forcasting radio
-        - Everytime there is an update from the forcasing, Bob will update the whiteboard info
-        - John is able to keep weather data update real time
+### Build a Machine Learning App with Vue
 
-### RxJS and BehaviorSubject
-1. Reactive Extenstions for JavaScript
-2. Built-in angular observables Library
-3. `BehaviorSubject` is a type of RxJS Observables used for statement management
+- Install **Vue CLI** with `npm i -g @vue/cli`
+- Create project with `vue create <project name>`
 
-```ts
-export class WeatherService {
+### Vue Basic Syntax
+- Each Component contains `<template>`, `<script>` and `<style>`
+- Each component export a JS object that can contains the following KEY:
+  - **data**: A function that returns a set of component *states*
+  - **methods**: A collection of function that can be used within component and its template
+  - **props**: acceptable props from parent, array or object (If type is required)
+  - **computed**: pre-calculated, cached value
+- [Directives](https://vuejs.org/api/built-in-directives.html#built-in-directives)
+  - some special token in the markup to tell library to do something to a DOM elements
+  - `v-if`, `v-else`, `v-else-if` to conditionally render some HTML elements
+  - `v-bind` to bind attribute to an expresion
+  - `v-model` two way binding of form element to a state
+  - `v-for` to render a list of elements
+  - `v-on` to handle event, shortened to `@`
 
-  constructor() { }
+### Machine Learning with Image Classification
 
-  weatherSubject = new BehaviorSubject({
-    city: "",
-    weather: "",
-    temperature: ""
-  })
-
-  // set weather value
-  setWeather(city: string, weather: string, temperature: string) {
-    this.weatherSubject.next({
-      city, weather, temperature
-    })
-  }
-
-  // get weather value
-  getWeather() {
-    return this.weatherSubject.asObservable()
-  }
-}
-```
 
 ### Containerization and Docker
 ##### What is Containerization
