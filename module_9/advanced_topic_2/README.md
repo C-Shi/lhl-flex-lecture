@@ -1,5 +1,6 @@
 # Advanced Topic
-- [x] Front End Framework with VUE
+- [x] Front End Framework comparison
+- [x] Tiny ML classification project with Vue
 - [x] Docker 101
 
 ### React vs Angular vs Vue
@@ -33,7 +34,9 @@
   - `v-on` to handle event, shortened to `@`
 
 ### Machine Learning with Image Classification
-
+  - pre-train model with Cloud Solution
+  - API call from web app to done prediction on the cloud
+  - load model into JS application using [Tensorflow.js](https://www.tensorflow.org/js/models) model
 
 ### Containerization and Docker
 ##### What is Containerization
@@ -54,17 +57,15 @@
 
     WORKDIR /app
 
-    RUN npm install -g @angular/cli
-
     COPY ./package.json ./
 
     RUN npm install
 
     COPY . .
 
-    EXPOSE 4200
+    EXPOSE 8080
 
-    CMD ["ng", "serve", "--host", "0.0.0.0"]
+    CMD ["npm", "run", "serve", "--host", "0.0.0.0"]
     ```
-- Build docker image `docker build`
-- Run container `docker run`
+- Build docker image `docker build -t what_animal:latest .`
+- Run container `docker run -it -p 8080:8080 <IMAGE ID>`

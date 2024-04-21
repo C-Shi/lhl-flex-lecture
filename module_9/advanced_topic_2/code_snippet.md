@@ -85,7 +85,7 @@ export default {
         <tbody>
             <tr v-for="(prediction, i) in predictions" :key="i">
                 <td>{{ prediction.className }}</td>
-                <td>{{ percentage(prediction.probability) }}</td>
+                <td>{{ prediction.probability }}</td>
             </tr>
         </tbody>
     </table>
@@ -96,11 +96,6 @@ export default {
     name: 'PredictionResult',
     props: {
         predictions: Array
-    },
-    computed: {
-        percentage() {
-            return (val) => (val * 100).toFixed(2) + "%"
-        }
     }
 }
 </script>
