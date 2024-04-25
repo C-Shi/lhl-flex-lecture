@@ -65,7 +65,7 @@
 
     EXPOSE 8080
 
-    CMD ["npm", "run", "serve", "--host", "0.0.0.0"]
+    CMD ["npm", "run", "serve"]
     ```
 - Build docker image `docker build -t what_animal:latest .`
 - Run container `docker run -it -p 8080:8080 <IMAGE ID>`
